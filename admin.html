@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Averreo Admin Paneli</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #000; --bg-card: #0c0c0c; --accent: #3b82f6; --text: #fff; --text-dim: #888; --border: #222; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+  body { background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+  
+  /* Sidebar */
+  .sidebar { width: 280px; background: var(--bg-card); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+  .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+  .sidebar-header h2 { font-size: 1.1rem; font-weight: 600; letter-spacing: 1px; }
+  .btn-new { background: var(--accent); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
+  .product-list { flex: 1; overflow-y: auto; }
+  .product-item { padding: 15px 20px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.2s; }
+  .product-item:hover, .product-item.active { background: rgba(255,255,255,0.05); }
+  .product-item h4 { font-size: 0.95rem; margin-bottom: 3px; }
+  .product-item p { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; }
+
+  /* Main Editor */
+  .editor { flex: 1; display: flex; flex-direction: column; background: var(--bg); }
+  .editor-header { padding: 20px 30px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .btn-save { background: #10b981; color: white; border: none; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: opacity 0.2s; }
+  .btn-save:hover { opacity: 0.8; }
+  .btn-delete { background: transparent; color: #ef4444; border: 1px solid #ef4444; padding: 7px 15px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: background 0.2s; }
+  .btn-delete:hover { background: rgba(239, 68, 68, 0.1); }
+  
+  .editor-content { flex: 1; overflow-y: auto; padding: 30px; }
+  .empty-state { display: flex; height: 100%; align-items: center; justify-content: center; color: var(--text-dim); }
+  
+  /* Form Elements */
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-control { width: 100%; background: #111; border: 1px solid var(--border); color: white; padding: 10px 12px; border-radius: 6px; font-size: 0.95rem; outline: none; }
+  .form-control:focus { border-color: var(--accent); }
+  textarea.form-control { resize: vertical; min-height: 80px; }
+  
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .lang-section { border: 1px solid var(--border); border-radius: 8px; padding: 20px; background: rgba(255,255,255,0.01); margin-bottom: 25px; }
+  .lang-section h3 { margin-bottom: 15px; font-size: 1rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+  
+  /* Features */
+  .feature-row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .feature-row input { flex: 1; }
+  .btn-remove-feature { background: transparent; border: 1px solid var(--border); color: var(--text-dim); padding: 0 10px; border-radius: 4px; cursor: pointer; }
+  .btn-remove-feature:hover { background: #ef4444; color: white; border-color: #ef4444; }
+  .btn-add-feature { background: transparent; border: 1px dashed var(--border); color: var(--text-dim); padding: 8px; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 5px; }
+  .btn-add-feature:hover { border-color: var(--text); color: var(--text); }
+  
+  /* Toast */
+  .toast { position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 12px 20px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); transform: translateY(100px); opacity: 0; transition: all 0.3s ease; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.error { background: #ef4444; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h2>Ürünler</h2>
+    <button class="btn-new" onclick="createNewProduct()">+ YENİ</button>
+  </div>
+  <div class="product-list" id="productList"></div>
+</div>
+
+<div class="editor">
+  <div id="editorHeader" class="editor-header" style="display: none;">
+    <div>
+      <span id="headerId" style="color: var(--text-dim); margin-right: 15px;"></span>
+      <button class="btn-delete" onclick="deleteCurrentProduct()">Sil</button>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="/" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.85rem; margin-right:15px;">Siteyi Görüntüle ↗</a>
+      <button class="btn-save" onclick="saveData()">Kaydet</button>
+    </div>
+  </div>
+  
+  <div class="editor-content" id="editorContent">
+    <div class="empty-state">Düzenlemek için soldan bir ürün seçin.</div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Kaydedildi!</div>
+
+<!-- Yüklü olan verileri okumak için -->
+<script src="js/products.js"></script>
+
+<script>
+  let currentId = null;
+  // Deep clone to avoid mutating the original until save
+  let workingData = JSON.parse(JSON.stringify(productsData));
+
+  const listEl = document.getElementById('productList');
+  const headerEl = document.getElementById('editorHeader');
+  const contentEl = document.getElementById('editorContent');
+  const toastEl = document.getElementById('toast');
+
+  function renderList() {
+    listEl.innerHTML = '';
+    Object.values(workingData).forEach(prod => {
+      const item = document.createElement('div');
+      item.className = `product-item ${prod.id === currentId ? 'active' : ''}`;
+      item.onclick = () => loadProduct(prod.id);
+      item.innerHTML = `
+        <h4>${prod.tr?.name || 'İsimsiz'}</h4>
+        <p>${prod.id}</p>
+      `;
+      listEl.appendChild(item);
+    });
+  }
+
+  function loadProduct(id) {
+    currentId = id;
+    renderList();
+    
+    const prod = workingData[id];
+    headerEl.style.display = 'flex';
+    document.getElementById('headerId').textContent = `ID: ${prod.id}`;
+    
+    contentEl.innerHTML = `
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Ürün ID (URL'de görünür, boşluksuz küçük harf)</label>
+          <input type="text" class="form-control" id="inp-id" value="${prod.id}" ${prod.id ? 'disabled' : ''}>
+        </div>
+        <div class="form-group">
+          <label>Ürün Görseli</label>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <input type="text" class="form-control" id="inp-img" value="${prod.image || ''}" placeholder="Dosya yolu veya Yükle">
+            <input type="file" id="upload-img" accept="image/*" style="display:none;" onchange="uploadFile(this, 'image')">
+            <button class="btn-new" onclick="document.getElementById('upload-img').click()">Yükle</button>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Ürün Videosu (Tanıtım)</label>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <input type="text" class="form-control" id="inp-vid" value="${prod.video || ''}" placeholder="Video dosya yolu veya Yükle">
+            <input type="file" id="upload-vid" accept="video/*" style="display:none;" onchange="uploadFile(this, 'video')">
+            <button class="btn-new" onclick="document.getElementById('upload-vid').click()">Yükle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- TR SECTION -->
+        <div class="lang-section">
+          <h3>TÜRKÇE (TR)</h3>
+          <div class="form-group">
+            <label>Ürün Adı</label>
+            <input type="text" class="form-control" id="tr-name" value="${prod.tr?.name || ''}">
+          </div>
+          <div class="form-group">
+            <label>Kategori</label>
+            <input type="text" class="form-control" id="tr-cat" value="${prod.tr?.category || ''}">
+          </div>
+          <div class="form-group">
+            <label>Breadcrumb (Örn: Savunma > Operasyonel > Sokak)</label>
+            <input type="text" class="form-control" id="tr-bread" value="${prod.tr?.breadcrumb || ''}">
+          </div>
+          <div class="form-group">
+            <label>Açıklama</label>
+            <textarea class="form-control" id="tr-desc">${prod.tr?.description || ''}</textarea>
+          </div>
+          
+          <label style="display:block; font-size:0.8rem; color:var(--text-dim); margin-bottom:8px;">Teknik Özellikler (Maks 4 önerilir)</label>
+          <div id="tr-features"></div>
+          <button class="btn-add-feature" onclick="addFeature('tr')">+ Yeni Özellik Ekle</button>
+        </div>
+
+        <!-- EN SECTION -->
+        <div class="lang-section">
+          <h3>ENGLISH (EN)</h3>
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" class="form-control" id="en-name" value="${prod.en?.name || ''}">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <input type="text" class="form-control" id="en-cat" value="${prod.en?.category || ''}">
+          </div>
+          <div class="form-group">
+            <label>Breadcrumb (e.g. Defense > Operational > Sokak)</label>
+            <input type="text" class="form-control" id="en-bread" value="${prod.en?.breadcrumb || ''}">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" id="en-desc">${prod.en?.description || ''}</textarea>
+          </div>
+          
+          <label style="display:block; font-size:0.8rem; color:var(--text-dim); margin-bottom:8px;">Specifications</label>
+          <div id="en-features"></div>
+          <button class="btn-add-feature" onclick="addFeature('en')">+ Add Specification</button>
+        </div>
+      </div>
+    `;
+
+    renderFeatures('tr', prod.tr?.features || []);
+    renderFeatures('en', prod.en?.features || []);
+  }
+
+  function renderFeatures(lang, features) {
+    const container = document.getElementById(`${lang}-features`);
+    container.innerHTML = '';
+    features.forEach((f, idx) => {
+      const row = document.createElement('div');
+      row.className = 'feature-row';
+      row.innerHTML = `
+        <input type="text" class="form-control f-title" placeholder="Başlık / Title" value="${f.title}">
+        <input type="text" class="form-control f-value" placeholder="Değer / Value" value="${f.value}">
+        <button class="btn-remove-feature" onclick="removeFeature('${lang}', ${idx})">X</button>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  function gatherFeatures(lang) {
+    const container = document.getElementById(`${lang}-features`);
+    const rows = container.querySelectorAll('.feature-row');
+    const features = [];
+    rows.forEach(row => {
+      features.push({
+        title: row.querySelector('.f-title').value,
+        value: row.querySelector('.f-value').value
+      });
+    });
+    return features;
+  }
+
+  window.addFeature = (lang) => {
+    saveCurrentFormState();
+    const prod = workingData[currentId];
+    if (!prod[lang]) prod[lang] = { features: [] };
+    if (!prod[lang].features) prod[lang].features = [];
+    prod[lang].features.push({title:'', value:''});
+    loadProduct(currentId);
+  }
+
+  window.removeFeature = (lang, idx) => {
+    saveCurrentFormState();
+    workingData[currentId][lang].features.splice(idx, 1);
+    loadProduct(currentId);
+  }
+
+  function saveCurrentFormState() {
+    if (!currentId) return;
+    const prod = workingData[currentId];
+    
+    // If it's a new product, it might need ID update
+    const newId = document.getElementById('inp-id').value.trim();
+    if (newId && newId !== currentId && !workingData[newId]) {
+      // Rename key
+      workingData[newId] = prod;
+      delete workingData[currentId];
+      currentId = newId;
+      prod.id = newId;
+    }
+
+    prod.image = document.getElementById('inp-img').value;
+    prod.video = document.getElementById('inp-vid') ? document.getElementById('inp-vid').value : (prod.video || '');
+    
+    if(!prod.tr) prod.tr = {};
+    prod.tr.name = document.getElementById('tr-name').value;
+    prod.tr.category = document.getElementById('tr-cat').value;
+    prod.tr.breadcrumb = document.getElementById('tr-bread').value;
+    prod.tr.description = document.getElementById('tr-desc').value;
+    prod.tr.features = gatherFeatures('tr');
+
+    if(!prod.en) prod.en = {};
+    prod.en.name = document.getElementById('en-name').value;
+    prod.en.category = document.getElementById('en-cat').value;
+    prod.en.breadcrumb = document.getElementById('en-bread').value;
+    prod.en.description = document.getElementById('en-desc').value;
+    prod.en.features = gatherFeatures('en');
+  }
+
+  window.createNewProduct = () => {
+    saveCurrentFormState();
+    const newId = 'yeni-urun-' + Date.now();
+    workingData[newId] = {
+      id: '',
+      image: 'assets/images/logo.png',
+      tr: { name: 'Yeni Ürün', category: '', breadcrumb: '', description: '', features: [] },
+      en: { name: 'New Product', category: '', breadcrumb: '', description: '', features: [] }
+    };
+    currentId = newId;
+    loadProduct(newId);
+  }
+
+  window.deleteCurrentProduct = () => {
+    if(confirm('Bu ürünü silmek istediğinize emin misiniz?')) {
+      delete workingData[currentId];
+      currentId = null;
+      headerEl.style.display = 'none';
+      contentEl.innerHTML = '<div class="empty-state">Silindi. Düzenlemek için soldan bir ürün seçin.</div>';
+      renderList();
+    }
+  }
+
+  window.saveData = () => {
+    saveCurrentFormState();
+    fetch('/api/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(workingData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success) {
+        showToast('Başarıyla kaydedildi!');
+        renderList();
+      } else {
+        showToast('Hata: ' + data.error, true);
+      }
+    })
+    .catch(err => showToast('Bağlantı hatası: ' + err, true));
+  }
+
+  window.uploadFile = (input, type) => {
+    if(!input.files || input.files.length === 0) return;
+    const file = input.files[0];
+    
+    showToast('Yükleniyor... Lütfen bekleyin.');
+    
+    fetch('/api/upload', {
+      method: 'POST',
+      headers: {
+        'X-File-Name': encodeURIComponent(file.name),
+        'X-File-Type': type
+      },
+      body: file
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success) {
+        if(type === 'image') document.getElementById('inp-img').value = data.path;
+        if(type === 'video') document.getElementById('inp-vid').value = data.path;
+        showToast('Dosya başarıyla yüklendi!');
+        saveCurrentFormState();
+      } else {
+        showToast('Yükleme hatası: ' + data.error, true);
+      }
+    })
+    .catch(err => showToast('Yükleme başarısız: ' + err, true));
+  }
+
+  function showToast(msg, isError=false) {
+    toastEl.textContent = msg;
+    toastEl.className = 'toast show' + (isError ? ' error' : '');
+    setTimeout(() => { toastEl.className = 'toast'; }, 3000);
+  }
+
+  // Init
+  renderList();
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Averreo Industries — Misyon</title>
+<meta name="description" content="Averreo Industries: Geleceği otonom sistemlerle koruma misyonumuz ve temel değerlerimiz.">
+<link rel="icon" type="image/png" href="assets/images/A logo Beyaz.png">
+<link rel="stylesheet" href="css/style.css?v=8">
+<style>
+  .hero-page { position:relative; width:100%; height:50vh; overflow:hidden; margin-top:60px; display:flex; align-items:center; justify-content:center; }
+  .hero-page-bg { position:absolute; inset:0; }
+  .hero-page-bg img { width:100%; height:100%; object-fit:cover; filter:brightness(0.3); }
+  .hero-page-overlay { position:absolute; inset:0; background:linear-gradient(0deg, var(--bg) 0%, transparent 100%); }
+  .hero-page-content { position:relative; z-index:2; text-align:center; max-width:800px; padding:0 2rem; }
+  .hero-page-content h1 { font-size:clamp(2.5rem, 4vw, 4rem); font-weight:700; margin-bottom:1rem; letter-spacing:-1px; }
+  .hero-page-content p { font-size:1.2rem; color:var(--white-70); line-height:1.6; }
+  .values-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem; margin-top:3rem; }
+  .value-card { background:var(--bg-card); padding:2.5rem; border-radius:var(--radius); border:1px solid rgba(255,255,255,0.05); }
+  .value-card h3 { font-size:1.5rem; margin-bottom:1rem; color:var(--white); }
+  .value-card p { color:var(--white-70); line-height:1.6; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="nav-left">
+<a href="index.html" class="nav-logo">
+<img src="assets/images/A logo Siyah.png" alt="Averreo" class="nav-logo-icon">
+AVERREO
+</a>
+</div>
+<div class="nav-center"></div>
+<div class="nav-right">
+<div class="nav-dropdown">
+<button class="nav-dropdown-btn">Savunma <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5"/></svg></button>
+<div class="nav-dropdown-menu">
+<div class="nav-group"><div class="nav-group-title">Operasyonel</div><a href="product.html?id=sokak">Sokak İHA</a></div>
+<div class="nav-group"><div class="nav-group-title">Gözetleme</div><a href="product.html?id=izci">İzci İHA</a></div>
+<div class="nav-group"><div class="nav-group-title">Lojistik</div><a href="product.html?id=yukcu">Yükçü İHA</a></div>
+<div class="nav-group"><div class="nav-group-title">Arama-Kurtarma</div><a href="product.html?id=kurtaran">Kurtaran İHA</a></div>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropdown-btn">Endüstri <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5"/></svg></button>
+<div class="nav-dropdown-menu">
+<div class="nav-group"><div class="nav-group-title">Denizcilik</div><a href="product.html?id=mercan">Mercan İDA</a></div>
+<div class="nav-group"><div class="nav-group-title">Tarımsal</div><a href="product.html?id=bereket">Bereket İHA</a></div>
+<div class="nav-group"><div class="nav-group-title">Madencilik</div><a href="product.html?id=cevher">Cevher İHA</a></div>
+<div class="nav-group"><div class="nav-group-title">Bilimsel Araştırma</div><a href="product.html?id=bilgin">Bilgin İDA</a></div>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropdown-btn">Şirket <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5"/></svg></button>
+<div class="nav-dropdown-menu">
+<a href="misyon.html"><div><strong>Misyon</strong><span>Vizyonumuz ve temel değerlerimiz</span></div></a>
+<a href="haberler.html"><div><strong>Haberler</strong><span>Basın bültenleri ve duyurular</span></div></a>
+<a href="liderlik.html"><div><strong>Liderlik</strong><span>Yönetim kurulu ve yöneticilerimiz</span></div></a>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropdown-btn">Kariyer <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5"/></svg></button>
+<div class="nav-dropdown-menu">
+<a href="#"><div><strong>Açık Pozisyonlar</strong><span>Kariyer fırsatlarını keşfedin</span></div></a>
+<a href="#"><div><strong>Staj Programı</strong><span>Öğrenci ve yeni mezunlar için</span></div></a>
+<a href="#"><div><strong>AR-GE Ekibi</strong><span>Teknoloji geliştirme projelerimiz</span></div></a>
+</div>
+</div>
+<div class="nav-divider"></div>
+<div class="lang-switch">
+<button class="lang-btn active" data-lang="tr">TR</button>
+<span>|</span>
+<button class="lang-btn" data-lang="en">EN</button>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-page">
+<div class="hero-page-bg"><img src="assets/images/nilufer_hybrid_drone.png" alt="Averreo Industries Misyon"></div>
+<div class="hero-page-overlay"></div>
+<div class="hero-page-content">
+<h1 class="reveal">Misyon & Vizyon</h1>
+<p class="reveal reveal-delay-1">Geleceği otonom sistemlerle koruyoruz.</p>
+</div>
+</section>
+
+<!-- CONTENT -->
+<section style="padding: 5rem 2rem; max-width: 1200px; margin: 0 auto;">
+<div style="text-align:center; max-width:800px; margin:0 auto 4rem auto;" class="reveal">
+  <h2 style="font-size:2.5rem; margin-bottom:1.5rem;">Otonom Geleceği Şekillendirmek</h2>
+  <p style="color:var(--white-70); font-size:1.1rem; line-height:1.8;">Averreo Industries olarak, insan hayatını riske atmadan, zorlu görevleri üstlenebilecek yapay zeka destekli otonom sistemler geliştiriyoruz. İnsansız hava ve deniz araçlarımızla savunma sanayiinin caydırıcılığını artırıyor, sivil endüstrinin veri toplama ve lojistik yeteneklerini yeni bir boyuta taşıyoruz.</p>
+</div>
+
+<div class="values-grid">
+  <div class="value-card reveal reveal-delay-1">
+    <h3>İnovasyon Tutkusu</h3>
+    <p>Sınırları zorlayan mühendislik çözümleri üretiyoruz. Algoritmalarımızdan donanımlarımıza kadar her aşamada teknolojik mükemmelliği hedefliyoruz.</p>
+  </div>
+  <div class="value-card reveal reveal-delay-2">
+    <h3>Sarsılmaz Güvenilirlik</h3>
+    <p>Sahada hata payı yoktur. Sistemlerimizi en zorlu şartlar ve kesintisiz görevler için askeri standartlarda tasarlıyor, test ediyor ve üretiyoruz.</p>
+  </div>
+  <div class="value-card reveal reveal-delay-3">
+    <h3>Milli Teknoloji Hamlesi</h3>
+    <p>Kritik teknolojilerde dışa bağımlılığı ortadan kaldırmak için AR-GE faaliyetlerimizi kendi öz kaynaklarımız ve yetenekli mühendislerimizle yürütüyoruz.</p>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-top">
+<div class="footer-brand">
+<div class="footer-logo">
+<img src="assets/images/A logo Siyah.png" alt="Averreo" class="footer-logo-icon">
+AVERREO
+</div>
+<p>Savunma ve sivil endüstri için gelişmiş otonom insansız sistemler üreten bir teknoloji şirketidir.</p>
+</div>
+<div class="footer-col">
+<h4>Şirket</h4>
+<a href="misyon.html">Misyon</a>
+<a href="haberler.html">Haberler</a>
+<a href="liderlik.html">Liderlik</a>
+</div>
+<div class="footer-col">
+<h4>Kariyer</h4>
+<a href="#">Açık Pozisyonlar</a>
+<a href="#">Staj Programı</a>
+<a href="#">AR-GE Ekibi</a>
+</div>
+<div class="footer-col">
+<h4>Sosyal</h4>
+<a href="#">X</a>
+<a href="#">YouTube</a>
+<a href="#">LinkedIn</a>
+<a href="#">Instagram</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>Copyright © 2026 Averreo Industries</p>
+<div class="footer-legal">
+<a href="#">Gizlilik Politikası</a>
+<a href="#">Kullanım Şartları</a>
+</div>
+<div>
+<span style="font-size:0.7rem;color:var(--white-30);text-transform:uppercase;letter-spacing:2px">İletişim</span><br>
+<a href="mailto:info@averreo.com" class="footer-contact-email" style="color:var(--white-70);text-decoration:none">info@averreo.com</a>
+</div>
+</div>
+</footer>
+
+<script src="js/i18n.js?v=2"></script>
+<script src="js/main.js?v=4"></script>
+</body>
+</html>

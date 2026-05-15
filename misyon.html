@@ -89,24 +89,11 @@ AVERREO
 <!-- CONTENT -->
 <section style="padding: 5rem 2rem; max-width: 1200px; margin: 0 auto;">
 <div style="text-align:center; max-width:800px; margin:0 auto 4rem auto;" class="reveal">
-  <h2 style="font-size:2.5rem; margin-bottom:1.5rem;">Otonom Geleceği Şekillendirmek</h2>
-  <p style="color:var(--white-70); font-size:1.1rem; line-height:1.8;">Averreo Industries olarak, insan hayatını riske atmadan, zorlu görevleri üstlenebilecek yapay zeka destekli otonom sistemler geliştiriyoruz. İnsansız hava ve deniz araçlarımızla savunma sanayiinin caydırıcılığını artırıyor, sivil endüstrinin veri toplama ve lojistik yeteneklerini yeni bir boyuta taşıyoruz.</p>
+  <h2 style="font-size:2.5rem; margin-bottom:1.5rem;" id="dynamic-mainTitle"></h2>
+  <p style="color:var(--white-70); font-size:1.1rem; line-height:1.8;" id="dynamic-mainText"></p>
 </div>
 
-<div class="values-grid">
-  <div class="value-card reveal reveal-delay-1">
-    <h3>İnovasyon Tutkusu</h3>
-    <p>Sınırları zorlayan mühendislik çözümleri üretiyoruz. Algoritmalarımızdan donanımlarımıza kadar her aşamada teknolojik mükemmelliği hedefliyoruz.</p>
-  </div>
-  <div class="value-card reveal reveal-delay-2">
-    <h3>Sarsılmaz Güvenilirlik</h3>
-    <p>Sahada hata payı yoktur. Sistemlerimizi en zorlu şartlar ve kesintisiz görevler için askeri standartlarda tasarlıyor, test ediyor ve üretiyoruz.</p>
-  </div>
-  <div class="value-card reveal reveal-delay-3">
-    <h3>Milli Teknoloji Hamlesi</h3>
-    <p>Kritik teknolojilerde dışa bağımlılığı ortadan kaldırmak için AR-GE faaliyetlerimizi kendi öz kaynaklarımız ve yetenekli mühendislerimizle yürütüyoruz.</p>
-  </div>
-</div>
+<div class="values-grid" id="dynamic-container"></div>
 </section>
 
 <!-- FOOTER -->
@@ -135,7 +122,7 @@ AVERREO
 <h4>Sosyal</h4>
 <a href="#">X</a>
 <a href="#">YouTube</a>
-<a href="#">LinkedIn</a>
+<a href="https://www.linkedin.com/company/averreo-industries/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 <a href="#">Instagram</a>
 </div>
 </div>
@@ -147,11 +134,89 @@ AVERREO
 </div>
 <div>
 <span style="font-size:0.7rem;color:var(--white-30);text-transform:uppercase;letter-spacing:2px">İletişim</span><br>
-<a href="mailto:info@averreo.com" class="footer-contact-email" style="color:var(--white-70);text-decoration:none">info@averreo.com</a>
+<a href="mailto:info@averreo.com.tr" class="footer-contact-email" style="color:var(--white-70);text-decoration:none">info@averreo.com.tr</a>
 </div>
 </div>
 </footer>
 
+
+<script src="js/company.js"></script>
+<script>
+  function renderCompanyPage(lang) {
+    if(typeof companyData === 'undefined') return;
+    const pageData = companyData['misyon'];
+    if(!pageData) return;
+    
+    // Fallback logic
+    const data = pageData[lang] && pageData[lang].heroTitle ? pageData[lang] : pageData['tr'];
+    if(!data) return;
+    
+    // Hero
+    const heroBg = document.querySelector('.hero-page-bg img');
+    if(heroBg && pageData.heroBg) heroBg.src = pageData.heroBg;
+    
+    const heroTitle = document.querySelector('.hero-page-content h1');
+    if(heroTitle) heroTitle.innerHTML = data.heroTitle || '';
+    
+    const heroSubtitle = document.querySelector('.hero-page-content p');
+    if(heroSubtitle) heroSubtitle.innerHTML = data.heroSubtitle || '';
+
+    // Misyon specific
+    if('misyon' === 'misyon') {
+      const mt = document.getElementById('dynamic-mainTitle');
+      if(mt) mt.innerHTML = data.mainTitle || '';
+      const mtext = document.getElementById('dynamic-mainText');
+      if(mtext) mtext.innerHTML = data.mainText || '';
+    }
+
+    const container = document.getElementById('dynamic-container');
+    if(!container) return;
+    container.innerHTML = '';
+    
+    if('misyon' === 'misyon' && data.values) {
+      data.values.forEach((v, i) => {
+        container.innerHTML += `<div class="value-card reveal reveal-delay-${i%3}">
+          <h3>${v.title}</h3>
+          <p>${v.desc}</p>
+        </div>`;
+      });
+    } else if('misyon' === 'haberler' && data.news) {
+      data.news.forEach((n, i) => {
+        const bgStyle = n.img ? `background-image:url('${n.img}'); background-size:cover; background-position:center;` : `background: linear-gradient(45deg, #111, #222);`;
+        container.innerHTML += `<div class="news-card reveal reveal-delay-${i%3}">
+          <div class="news-img">
+            <div style="width:100%; height:100%; ${bgStyle}"></div>
+          </div>
+          <div class="news-content">
+            <div class="news-date">${n.date}</div>
+            <h3 class="news-title">${n.title}</h3>
+            <p class="news-desc">${n.desc}</p>
+            <a href="${n.link}" class="news-link">Devamını Oku &rarr;</a>
+          </div>
+        </div>`;
+      });
+    } else if('misyon' === 'liderlik' && data.leaders) {
+      data.leaders.forEach((l, i) => {
+        const imgHtml = l.img ? `<img src="${l.img}" alt="${l.name}">` : `<svg viewBox="0 0 24 24" fill="var(--white-10)" style="width:100%; height:100%; padding:20px;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
+        container.innerHTML += `<div class="leader-card reveal reveal-delay-${i%3}">
+          <div class="leader-img">
+            ${imgHtml}
+          </div>
+          <div class="leader-name">${l.name}</div>
+          <div class="leader-title">${l.role}</div>
+          <p class="leader-desc">${l.desc}</p>
+        </div>`;
+      });
+    }
+  }
+
+  window.updateCompanyContent = renderCompanyPage;
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('averreo_lang') || 'tr';
+    renderCompanyPage(savedLang);
+  });
+</script>
 <script src="js/i18n.js?v=2"></script>
 <script src="js/main.js?v=4"></script>
 </body>

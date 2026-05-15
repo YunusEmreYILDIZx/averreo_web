@@ -170,6 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     localStorage.setItem('averreo_lang', lang);
+    if (typeof window.updateCompanyContent === 'function') {
+      window.updateCompanyContent(lang);
+    }
   }
 
   // Bind events

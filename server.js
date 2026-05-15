@@ -39,6 +39,26 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // API to save company data
+  if (req.method === 'POST' && req.url === '/api/save-company') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', () => {
+      try {
+        const data = JSON.parse(body);
+        const jsContent = `const companyData = ${JSON.stringify(data, null, 2)};\n`;
+        fs.writeFileSync(path.join(__dirname, 'js', 'company.js'), jsContent, 'utf8');
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true }));
+      } catch (e) {
+        console.error("Save company error:", e);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: e.message }));
+      }
+    });
+    return;
+  }
+
   // API to upload files (images/videos)
   if (req.method === 'POST' && req.url === '/api/upload') {
     const filename = decodeURIComponent(req.headers['x-file-name'] || 'upload.bin');
@@ -76,7 +96,7 @@ const server = http.createServer((req, res) => {
   // Static file routing
   let filePath = req.url === '/' ? '/index.html' : req.url;
   // Remove query strings like ?id=sokak
-  filePath = filePath.split('?')[0];
+  filePath = decodeURIComponent(filePath.split('?')[0]);
   
   const extname = String(path.extname(filePath)).toLowerCase();
   let contentType = MIME_TYPES[extname] || 'application/octet-stream';

@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #000000;
+    --bg-nav: rgba(0,0,0,0.95);
+    --bg-card: #080808;
+    --bg-footer: #000000;
+    --white: #ffffff;
+    --white-90: rgba(255,255,255,0.9);
+    --white-70: rgba(255,255,255,0.7);
+    --white-50: rgba(255,255,255,0.5);
+    --white-30: rgba(255,255,255,0.3);
+    --white-10: rgba(255,255,255,0.1);
+    --white-05: rgba(255,255,255,0.05);
+    --accent: #3b82f6;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --radius: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--white-30); border-radius: 3px; }
+
+/* Custom reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }

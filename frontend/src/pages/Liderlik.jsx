@@ -4,7 +4,7 @@ export default function Liderlik() {
   const { t } = useTranslation();
 
   return (
-    <div className="pt-32 pb-24 px-12 max-w-6xl mx-auto min-h-screen">
+    <div className="pt-28 md:pt-32 pb-16 md:pb-24 px-6 md:px-12 max-w-6xl mx-auto min-h-screen">
       <h1 className="text-4xl md:text-5xl font-bold mb-12 tracking-tight text-center">{t('leadership_title')}</h1>
       <p className="text-center text-white/50 mb-12">{t('leadership_subtitle')}</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

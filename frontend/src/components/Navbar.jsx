@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Menu, ChevronDown, Globe } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const [products, setProducts] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchProducts = () => {
@@ -23,20 +24,22 @@ export default function Navbar() {
 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
+    setIsMobileMenuOpen(false); // Close menu on language change
   };
 
   const defenseProducts = products ? Object.entries(products).filter(([_, p]) => p.tr.breadcrumb.toLowerCase().includes('savunma')) : [];
   const industryProducts = products ? Object.entries(products).filter(([_, p]) => p.tr.breadcrumb.toLowerCase().includes('endüstri')) : [];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-10 h-16 bg-black/95 backdrop-blur-md border-b border-white/5 transition-all">
+    <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-10 h-16 bg-black/95 backdrop-blur-md border-b border-white/5 transition-all">
       <div className="flex items-center">
-        <Link to="/" className="text-white text-lg font-bold tracking-widest uppercase flex items-center gap-2">
-          <img src="/assets/images/A%20logo%20Siyah.png" alt="Averreo" className="h-7 mix-blend-screen" />
+        <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-bold tracking-widest uppercase flex items-center gap-2">
+          <img src="/assets/images/A%20logo%20Siyah.png" alt="Averreo" className="h-6 md:h-7 mix-blend-screen" />
           AVERREO
         </Link>
       </div>
 
+      {/* Desktop Menu */}
       <div className="hidden md:flex items-center space-x-1">
         <div className="group relative">
           <button className="text-white/70 hover:text-white px-4 h-16 flex items-center gap-1 font-medium transition-colors">
@@ -92,9 +95,65 @@ export default function Navbar() {
         </div>
       </div>
       
-      <button className="md:hidden text-white">
-        <Menu />
+      {/* Mobile Toggle Button */}
+      <button 
+        className="md:hidden text-white/70 hover:text-white p-2 transition-colors"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[#050505] border-t border-white/10 flex flex-col md:hidden overflow-y-auto pb-10">
+          <div className="flex flex-col p-6 space-y-8">
+            
+            {/* Savunma */}
+            <div>
+              <h3 className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">{t('nav_defense')}</h3>
+              <div className="flex flex-col gap-3">
+                {defenseProducts.map(([id, p]) => (
+                  <Link key={id} to={`/product/${id}`} onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">
+                    {i18n.language === 'en' && p.en ? p.en.name : p.tr.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Endüstri */}
+            <div>
+              <h3 className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">{t('nav_industry')}</h3>
+              <div className="flex flex-col gap-3">
+                {industryProducts.map(([id, p]) => (
+                  <Link key={id} to={`/product/${id}`} onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">
+                    {i18n.language === 'en' && p.en ? p.en.name : p.tr.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Kurumsal */}
+            <div>
+              <h3 className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">{t('nav_company')}</h3>
+              <div className="flex flex-col gap-3">
+                <Link to="/misyon" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_mission')}</Link>
+                <Link to="/haberler" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_news')}</Link>
+                <Link to="/liderlik" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_leadership')}</Link>
+              </div>
+            </div>
+
+            {/* Language Selection */}
+            <div className="pt-6 border-t border-white/10">
+              <h3 className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">Dil / Language</h3>
+              <div className="flex gap-4">
+                <button onClick={() => changeLanguage('tr')} className={`flex-1 py-3 text-sm font-bold rounded-xl border ${i18n.language === 'tr' ? 'bg-white text-black border-white' : 'text-white/50 border-white/10'}`}>Türkçe</button>
+                <button onClick={() => changeLanguage('en')} className={`flex-1 py-3 text-sm font-bold rounded-xl border ${i18n.language === 'en' ? 'bg-white text-black border-white' : 'text-white/50 border-white/10'}`}>English</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

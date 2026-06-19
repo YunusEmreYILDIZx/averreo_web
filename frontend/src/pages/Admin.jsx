@@ -5,7 +5,7 @@ import ProductManager from '../components/admin/ProductManager';
 import CompanyManager from '../components/admin/CompanyManager';
 
 export default function Admin() {
-  const [token, setToken] = useState(localStorage.getItem('adminToken'));
+  const [token, setToken] = useState(sessionStorage.getItem('adminToken'));
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -44,7 +44,7 @@ export default function Admin() {
       const data = await res.json();
       if (data.success) {
         setToken(data.token);
-        localStorage.setItem('adminToken', data.token);
+        sessionStorage.setItem('adminToken', data.token);
       } else {
         setError(data.error || 'Hatalı kullanıcı adı veya şifre');
       }
@@ -55,7 +55,7 @@ export default function Admin() {
 
   const handleLogout = () => {
     setToken(null);
-    localStorage.removeItem('adminToken');
+    sessionStorage.removeItem('adminToken');
   };
 
   if (!token) {

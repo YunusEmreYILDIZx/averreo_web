@@ -4,7 +4,7 @@ export default function Misyon() {
   const { t } = useTranslation();
 
   return (
-    <div className="pt-32 pb-24 px-12 max-w-4xl mx-auto min-h-screen">
+    <div className="pt-28 md:pt-32 pb-16 md:pb-24 px-6 md:px-12 max-w-4xl mx-auto min-h-screen">
       <h1 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">{t('mission_title')}</h1>
       <div className="prose prose-invert prose-lg">
         <p className="text-xl text-white/70 leading-relaxed mb-12">

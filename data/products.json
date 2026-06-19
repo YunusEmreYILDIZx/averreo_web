@@ -6,48 +6,68 @@
       "name": "Sokak",
       "category": "Operasyonel İHA",
       "breadcrumb": "Savunma > Operasyonel > Sokak",
+      "tagline": "Gökyüzündeki Taktiksel Gücünüz",
       "description": "Taktik sahada üstün ateş gücü ve hassas vuruş yeteneği sunan, zorlu koşullarda görev yapabilen yeni nesil operasyonel insansız hava aracı.",
-      "features": [
+      "details": "Düşük radar kesit alanı ve sessiz uçuş yeteneği sayesinde hedefe fark edilmeden yaklaşır. Üzerindeki akıllı mühimmat sistemleri ile kritik görevlerde cerrahi hassasiyetle vurucu güç sağlar.",
+      "highlights": [
+        { "title": "Menzil", "desc": "150 km", "icon": "Map" },
+        { "title": "Görev Süresi", "desc": "4 Saat", "icon": "Clock" },
+        { "title": "Faydalı Yük", "desc": "25 kg", "icon": "Shield" },
+        { "title": "Hız", "desc": "120 km/s", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "Menzil",
-          "value": "150 km"
+          "title": "Hassas Vuruş Kabiliyeti",
+          "description": "Gelişmiş hedef tanıma algoritmaları ve lazer işaretleme ile desteklenen sistem, hareketli ve sabit hedefleri minimum sapma ile etkisiz hale getirir."
         },
         {
-          "title": "Görev Süresi",
-          "value": "4 Saat"
+          "title": "Zorlu Hava Koşullarına Dayanıklılık",
+          "description": "Yağmur, kar ve şiddetli rüzgar gibi zorlu iklim koşullarında bile stabilitesini koruyarak görevi başarıyla tamamlar."
         },
         {
-          "title": "Faydalı Yük",
-          "value": "25 kg"
-        },
-        {
-          "title": "Hız",
-          "value": "120 km/s"
+          "title": "Sürü İHA Teknolojisi",
+          "description": "Sokak İHA'ları, gelişmiş otonom yapay zeka sayesinde diğer birimlerle iletişim kurarak sürü halinde karmaşık taarruz operasyonları icra edebilir."
         }
+      ],
+      "features": [
+        { "title": "Menzil", "value": "150 km" },
+        { "title": "Görev Süresi", "value": "4 Saat" },
+        { "title": "Faydalı Yük", "value": "25 kg" },
+        { "title": "Hız", "value": "120 km/s" }
       ]
     },
     "en": {
       "name": "Sokak",
       "category": "Operational UAV",
       "breadcrumb": "Defense > Operational > Sokak",
+      "tagline": "Your Tactical Power in the Sky",
       "description": "Next-generation operational unmanned aerial vehicle offering superior firepower and precision strike capabilities in tactical fields under harsh conditions.",
-      "features": [
+      "details": "It approaches the target undetected thanks to its low radar cross-section and silent flight capabilities. Equipped with smart munition systems, it provides striking power with surgical precision in critical missions.",
+      "highlights": [
+        { "title": "Range", "desc": "150 km", "icon": "Map" },
+        { "title": "Endurance", "desc": "4 Hours", "icon": "Clock" },
+        { "title": "Payload", "desc": "25 kg", "icon": "Shield" },
+        { "title": "Speed", "desc": "120 km/h", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "Range",
-          "value": "150 km"
+          "title": "Precision Strike Capability",
+          "description": "Supported by advanced target recognition algorithms and laser designation, the system neutralizes moving and stationary targets with minimal deviation."
         },
         {
-          "title": "Endurance",
-          "value": "4 Hours"
+          "title": "Resilience to Harsh Weather",
+          "description": "It successfully completes missions while maintaining stability even in severe climate conditions such as rain, snow, and strong winds."
         },
         {
-          "title": "Payload",
-          "value": "25 kg"
-        },
-        {
-          "title": "Speed",
-          "value": "120 km/h"
+          "title": "Swarm UAV Technology",
+          "description": "Sokak UAVs can execute complex offensive operations in swarms by communicating with other units through advanced autonomous AI."
         }
+      ],
+      "features": [
+        { "title": "Range", "value": "150 km" },
+        { "title": "Endurance", "value": "4 Hours" },
+        { "title": "Payload", "value": "25 kg" },
+        { "title": "Speed", "value": "120 km/h" }
       ]
     }
   },
@@ -58,26 +78,68 @@
       "name": "Dehliz",
       "category": "Endüstriyel İHA",
       "breadcrumb": "Endüstri > Endüstriyel > Dehliz",
-      "description": "",
-      "details": "",
-      "features": [
+      "tagline": "Ulaşılamayanı Dijitalleştirin",
+      "description": "Dehliz, zorlu endüstriyel ortamların denetimi ve haritalanması için geliştirilmiş, eşsiz zeka ve çok yönlülükle donatılmış kapalı alan dronudur.",
+      "details": "Çarpışmaya dayanıklı kafes tasarımı ve LiDAR entegrasyonu sayesinde en dar ve tehlikeli alanlarda bile güvenle uçuş yapar. Santimetre hassasiyetindeki 3D haritalama yeteneği ve üstün aydınlatma kapasitesi ile karanlık dehlizleri aydınlatır.",
+      "highlights": [
+        { "title": "Uçuş Süresi", "desc": "12 Dakika", "icon": "Clock" },
+        { "title": "Çarpışma Dayanımı", "desc": "Karbon Fiber Kafes", "icon": "Shield" },
+        { "title": "Haritalama", "desc": "3D LiDAR Tarama", "icon": "Map" },
+        { "title": "Aydınlatma", "desc": "16,000 Lümen LED", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "",
-          "value": ""
+          "title": "Kesintisiz 3D LiDAR Haritalama",
+          "description": "Uçuş sırasında eşzamanlı olarak yüksek yoğunluklu nokta bulutları oluşturun. Gerçek zamanlı 3D haritalama ile çevre bilincinizi artırın ve denetimlerinizi dijitalleştirin."
+        },
+        {
+          "title": "Kusursuz Çarpışma Toleransı",
+          "description": "Dar tüneller, boru hatları ve tehlikeli kapalı alanlarda çarpışmalardan etkilenmeden uçuşa devam edin. Esnek karbon fiber kafes yapısı, dronu ve ortamı korur."
+        },
+        {
+          "title": "Karanlıkta Üstün Görüş",
+          "description": "Özel açılı oblik aydınlatma ve 16,000 lümene kadar güçlü LED'ler ile zifiri karanlıkta bile çatlakları, korozyonu ve hataları en ince ayrıntısına kadar tespit edin."
         }
+      ],
+      "features": [
+        { "title": "Kamera Çözünürlüğü", "value": "4K UHD" },
+        { "title": "Görüş Açısı (FoV)", "value": "180° Engel Olmayan Görüş" },
+        { "title": "İletişim Menzili", "value": "500m (Kapalı Alan)" },
+        { "title": "Ağırlık", "value": "1900g" }
       ]
     },
     "en": {
       "name": "Dehliz",
       "category": "Industrial UAV",
       "breadcrumb": "Industry > Industrial > Dehliz",
-      "description": "",
-      "details": "",
-      "features": [
+      "tagline": "Digitize the Inaccessible",
+      "description": "Dehliz is a confined-space drone built for the inspection and mapping of harsh industrial environments, equipped with unmatched intelligence and versatility.",
+      "details": "With its collision-tolerant cage design and LiDAR integration, it flies safely in the tightest and most dangerous spaces. It illuminates dark corridors with centimeter-accurate 3D mapping capabilities and superior lighting capacity.",
+      "highlights": [
+        { "title": "Flight Time", "desc": "12 Minutes", "icon": "Clock" },
+        { "title": "Collision Tolerance", "desc": "Carbon Fiber Cage", "icon": "Shield" },
+        { "title": "Mapping", "desc": "3D LiDAR Scanning", "icon": "Map" },
+        { "title": "Lighting", "desc": "16,000 Lumens LED", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "",
-          "value": ""
+          "title": "Continuous 3D LiDAR Mapping",
+          "description": "Generate high-density point clouds simultaneously during flight. Increase situational awareness and digitize your inspections with real-time 3D mapping."
+        },
+        {
+          "title": "Flawless Collision Tolerance",
+          "description": "Continue flying unaffected by collisions in narrow tunnels, pipelines, and hazardous confined spaces. The flexible carbon fiber cage protects both the drone and the environment."
+        },
+        {
+          "title": "Superior Vision in the Dark",
+          "description": "Detect cracks, corrosion, and flaws in minute detail even in pitch darkness with specially angled oblique lighting and powerful LEDs up to 16,000 lumens."
         }
+      ],
+      "features": [
+        { "title": "Camera Resolution", "value": "4K UHD" },
+        { "title": "Field of View (FoV)", "value": "Unobstructed 180°" },
+        { "title": "Comm Range", "value": "500m (Confined Space)" },
+        { "title": "Weight", "value": "1900g" }
       ]
     }
   },
@@ -88,48 +150,68 @@
       "name": "Yükçü",
       "category": "Lojistik İHA",
       "breadcrumb": "Savunma > Lojistik > Yükçü",
+      "tagline": "Lojistiğin Otonom Boyutu",
       "description": "Zorlu arazilerde ve tehlikeli bölgelerde askeri birliklere güvenli, hızlı ve otonom ikmal desteği sağlamak için tasarlanmış ağır yük İHA'sı.",
-      "features": [
+      "details": "Geleneksel kara araçlarının ulaşamadığı sarp arazilerde, ön saftaki birliklere mühimmat, tıbbi malzeme ve erzak ulaştırır. Dikey iniş kalkış (VTOL) özelliği ile piste ihtiyaç duymaz.",
+      "highlights": [
+        { "title": "Kapasite", "desc": "150 kg", "icon": "Shield" },
+        { "title": "Menzil", "desc": "50 km", "icon": "Map" },
+        { "title": "Görev Süresi", "desc": "2 Saat", "icon": "Clock" },
+        { "title": "Güç", "desc": "Hibrit Motor", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "Taşıma Kapasitesi",
-          "value": "150 kg"
+          "title": "Ağır Yük Taşıma ve Otonom İkmal",
+          "description": "150 kg'a kadar faydalı yük taşıyabilme kapasitesiyle, zorlu operasyon koşullarında en kritik malzemeleri tamamen otonom olarak istenilen koordinatlara bırakır."
         },
         {
-          "title": "Menzil",
-          "value": "50 km"
+          "title": "Dikey İniş ve Kalkış (VTOL) Yeteneği",
+          "description": "Özel motor tasarımı sayesinde piste ihtiyaç duymadan olduğu yerden havalanıp inebilir. Ormanlık alanlarda veya gemi güvertelerinde operasyon yapabilir."
         },
         {
-          "title": "Görev Süresi",
-          "value": "2 Saat"
-        },
-        {
-          "title": "Güç Tipi",
-          "value": "Hibrit Motor"
+          "title": "Güvenli Yük Bırakma Sistemi",
+          "description": "Elektronik salınım azaltıcı sistemler ve paraşütlü/kancalı yük bırakma mekanizmalarıyla, kargoyu hedef noktaya sarsıntısız ve güvenli bir şekilde ulaştırır."
         }
+      ],
+      "features": [
+        { "title": "Taşıma Kapasitesi", "value": "150 kg" },
+        { "title": "Menzil", "value": "50 km" },
+        { "title": "Görev Süresi", "value": "2 Saat" },
+        { "title": "Güç Tipi", "value": "Hibrit Motor" }
       ]
     },
     "en": {
       "name": "Yükçü",
       "category": "Logistics UAV",
       "breadcrumb": "Defense > Logistics > Yükçü",
+      "tagline": "The Autonomous Dimension of Logistics",
       "description": "Heavy-lift UAV designed to provide safe, fast, and autonomous supply support to military units in challenging terrains and hazardous zones.",
-      "features": [
+      "details": "It delivers ammunition, medical supplies, and rations to frontline units in steep terrains inaccessible by traditional ground vehicles. With its VTOL capability, it requires no runway.",
+      "highlights": [
+        { "title": "Capacity", "desc": "150 kg", "icon": "Shield" },
+        { "title": "Range", "desc": "50 km", "icon": "Map" },
+        { "title": "Endurance", "desc": "2 Hours", "icon": "Clock" },
+        { "title": "Power", "desc": "Hybrid Engine", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "Payload Capacity",
-          "value": "150 kg"
+          "title": "Heavy Payload Delivery and Autonomous Resupply",
+          "description": "With a payload capacity of up to 150 kg, it drops the most critical supplies fully autonomously to desired coordinates in harsh operational conditions."
         },
         {
-          "title": "Range",
-          "value": "50 km"
+          "title": "Vertical Take-Off and Landing (VTOL)",
+          "description": "Thanks to its special engine design, it can take off and land vertically without a runway. It can operate in forested areas or on ship decks."
         },
         {
-          "title": "Endurance",
-          "value": "2 Hours"
-        },
-        {
-          "title": "Power Type",
-          "value": "Hybrid Engine"
+          "title": "Secure Cargo Drop System",
+          "description": "With electronic anti-sway systems and parachute/hook release mechanisms, it delivers the cargo to the target point smoothly and safely."
         }
+      ],
+      "features": [
+        { "title": "Payload Capacity", "value": "150 kg" },
+        { "title": "Range", "value": "50 km" },
+        { "title": "Endurance", "value": "2 Hours" },
+        { "title": "Power Type", "value": "Hybrid Engine" }
       ]
     }
   },
@@ -139,49 +221,69 @@
     "tr": {
       "name": "Mercan",
       "category": "Denizcilik İDA",
-      "breadcrumb": "Endüstri > Denizclik> Mercan",
+      "breadcrumb": "Endüstri > Denizcilik > Mercan",
+      "tagline": "Derinlerin Bilimsel Kaşifi",
       "description": "Oşinografik verilerin toplanması, su altı florasının incelenmesi ve çevre izleme görevleri için modüler bilimsel insansız deniz aracı.",
-      "features": [
+      "details": "Yapay zeka destekli otonom seyir özelliği ile rotasını belirler. Güneş panelleri sayesinde günlerce okyanusta kalarak yüzey altı analizler yapar ve verileri uydu üzerinden merkeze iletir.",
+      "highlights": [
+        { "title": "Derinlik", "desc": "250 Metre", "icon": "Map" },
+        { "title": "Örnekleme", "desc": "Robotik Kol", "icon": "Shield" },
+        { "title": "Enerji", "desc": "Güneş Paneli", "icon": "Sun" },
+        { "title": "İletişim", "desc": "Uydu", "icon": "Clock" }
+      ],
+      "capabilities": [
         {
-          "title": "Derinlik Desteği",
-          "value": "250 Metre"
+          "title": "Gelişmiş Oşinografik Sensörler",
+          "description": "Sıcaklık, tuzluluk, ph değerleri ve mikroplastik ölçümleri için özel kalibre edilmiş sensörleriyle denizlerin anlık sağlık durumunu raporlar."
         },
         {
-          "title": "Örnekleme",
-          "value": "Robotik Kol"
+          "title": "Kendi Kendine Yetecek Enerji Yönetimi",
+          "description": "Üzerinde bulunan yüksek verimli güneş panelleri bataryaları şarj eder, görev süresini haftalar seviyesine çıkararak maliyetleri düşürür."
         },
         {
-          "title": "Enerji",
-          "value": "Güneş Paneli"
-        },
-        {
-          "title": "İletişim",
-          "value": "Uydu Bağlantısı"
+          "title": "Su Altı Robotik Müdahale",
+          "description": "250 metre derinliğe kadar inebilen modüler robotik kolu sayesinde su altı kablolarını inceler, dip tortularından fiziksel numuneler toplar."
         }
+      ],
+      "features": [
+        { "title": "Derinlik Desteği", "value": "250 Metre" },
+        { "title": "Örnekleme", "value": "Robotik Kol" },
+        { "title": "Enerji", "value": "Güneş Paneli" },
+        { "title": "İletişim", "value": "Uydu Bağlantısı" }
       ]
     },
     "en": {
       "name": "Bilgin",
       "category": "Scientific Research USV",
       "breadcrumb": "Industry > Scientific Research > Bilgin",
+      "tagline": "Scientific Explorer of the Depths",
       "description": "Modular scientific unmanned surface vehicle for collecting oceanographic data, studying underwater flora, and environmental monitoring.",
-      "features": [
+      "details": "It charts its course with AI-supported autonomous navigation. Staying in the ocean for days using solar panels, it conducts subsurface analyses and transmits data to headquarters via satellite.",
+      "highlights": [
+        { "title": "Depth", "desc": "250 Meters", "icon": "Map" },
+        { "title": "Sampling", "desc": "Robotic Arm", "icon": "Shield" },
+        { "title": "Energy", "desc": "Solar Panel", "icon": "Sun" },
+        { "title": "Comms", "desc": "Satellite", "icon": "Clock" }
+      ],
+      "capabilities": [
         {
-          "title": "Depth Support",
-          "value": "250 Meters"
+          "title": "Advanced Oceanographic Sensors",
+          "description": "It reports the real-time health of the seas with specially calibrated sensors for temperature, salinity, pH values, and microplastic measurements."
         },
         {
-          "title": "Sampling",
-          "value": "Robotic Arm"
+          "title": "Self-Sufficient Energy Management",
+          "description": "High-efficiency solar panels onboard charge the batteries, extending mission endurance to weeks and reducing operational costs."
         },
         {
-          "title": "Energy",
-          "value": "Solar Panel"
-        },
-        {
-          "title": "Communication",
-          "value": "Satellite Link"
+          "title": "Underwater Robotic Intervention",
+          "description": "Thanks to its modular robotic arm that can reach depths of 250 meters, it inspects underwater cables and collects physical samples from bottom sediments."
         }
+      ],
+      "features": [
+        { "title": "Depth Support", "value": "250 Meters" },
+        { "title": "Sampling", "value": "Robotic Arm" },
+        { "title": "Energy", "value": "Solar Panel" },
+        { "title": "Communication", "value": "Satellite Link" }
       ]
     }
   },
@@ -192,48 +294,68 @@
       "name": "Bereket",
       "category": "Tarımsal İHA",
       "breadcrumb": "Endüstri > Tarım > Bereket",
+      "tagline": "Tarlanızdaki Verim Bereketi",
       "description": "Hassas tarım uygulamaları, mahsul analizi ve otonom ilaçlama için tasarlanmış yüksek verimli tarımsal insansız hava aracı.",
-      "features": [
+      "details": "Büyük tarım arazilerinin gübreleme, ilaçlama ve tohumlama süreçlerini santimetre hassasiyetinde otonom olarak yönetir. Hastalıkları henüz büyümeden kızılötesi kameralarıyla tespit eder.",
+      "highlights": [
+        { "title": "Kapasite", "desc": "40 Litre", "icon": "Shield" },
+        { "title": "Hız", "desc": "15 Hektar/Saat", "icon": "Clock" },
+        { "title": "Analiz", "desc": "Multispektral", "icon": "Map" },
+        { "title": "Uçuş", "desc": "45 Dk", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "Kapasite",
-          "value": "40 Litre"
+          "title": "Otonom ve Hassas İlaçlama",
+          "description": "Santimetre hassasiyetinde RTK konumlandırma ile bitkilerin tam üzerine gerekli miktarda ilaç püskürterek hem tasarruf sağlar hem de toprağı korur."
         },
         {
-          "title": "İlaçlama Hızı",
-          "value": "15 Hektar/Saat"
+          "title": "Multispektral Mahsul Analizi",
+          "description": "Bitkilerdeki stresi, su eksikliğini veya zararlı böcek hasarını çıplak gözle görülmeden haftalar önce multispektral sensörlerle tespit edin."
         },
         {
-          "title": "Analiz",
-          "value": "Multispektral"
-        },
-        {
-          "title": "Uçuş Süresi",
-          "value": "45 Dk"
+          "title": "Değişken Oranlı Uygulama (VRA)",
+          "description": "Önceden oluşturulmuş reçete haritalarını kullanarak, tarlanın sadece ihtiyaç duyan bölgelerine daha yoğun, sağlıklı bölgelerine daha az gübre atar."
         }
+      ],
+      "features": [
+        { "title": "Kapasite", "value": "40 Litre" },
+        { "title": "İlaçlama Hızı", "value": "15 Hektar/Saat" },
+        { "title": "Analiz", "value": "Multispektral" },
+        { "title": "Uçuş Süresi", "value": "45 Dk" }
       ]
     },
     "en": {
       "name": "Bereket",
       "category": "Agricultural UAV",
       "breadcrumb": "Industry > Agriculture > Bereket",
+      "tagline": "The Blessing of Yield in Your Field",
       "description": "Highly efficient agricultural unmanned aerial vehicle designed for precision agriculture applications, crop analysis, and autonomous spraying.",
-      "features": [
+      "details": "It autonomously manages fertilizing, spraying, and seeding processes of large farmlands with centimeter precision. It detects diseases with infrared cameras before they spread.",
+      "highlights": [
+        { "title": "Capacity", "desc": "40 Liters", "icon": "Shield" },
+        { "title": "Speed", "desc": "15 Hectares/Hr", "icon": "Clock" },
+        { "title": "Analysis", "desc": "Multispectral", "icon": "Map" },
+        { "title": "Flight", "desc": "45 Min", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "Capacity",
-          "value": "40 Liters"
+          "title": "Autonomous and Precision Spraying",
+          "description": "Using RTK positioning with centimeter precision, it sprays the exact required amount directly onto crops, saving resources and protecting the soil."
         },
         {
-          "title": "Spraying Rate",
-          "value": "15 Hectares/Hr"
+          "title": "Multispectral Crop Analysis",
+          "description": "Detect plant stress, water deficiency, or pest damage weeks before they become visible to the naked eye with multispectral sensors."
         },
         {
-          "title": "Analysis",
-          "value": "Multispectral"
-        },
-        {
-          "title": "Flight Time",
-          "value": "45 Min"
+          "title": "Variable Rate Application (VRA)",
+          "description": "Using pre-generated prescription maps, it applies fertilizer dynamically—more to areas in need and less to healthy areas."
         }
+      ],
+      "features": [
+        { "title": "Capacity", "value": "40 Liters" },
+        { "title": "Spraying Rate", "value": "15 Hectares/Hr" },
+        { "title": "Analysis", "value": "Multispectral" },
+        { "title": "Flight Time", "value": "45 Min" }
       ]
     }
   },
@@ -244,48 +366,68 @@
       "name": "İzci",
       "category": "Gözetleme İHA",
       "breadcrumb": "Savunma > Gözetleme > İzci",
+      "tagline": "Sınır Tanımayan Kesintisiz Görüş",
       "description": "Gelişmiş elektro-optik ve kızılötesi sensörleri ile gece ve gündüz kesintisiz istihbarat, keşif ve gözetleme (ISR) sağlayan taktik İHA sistemi.",
-      "features": [
+      "details": "Yüksek irtifadan günlerce havada kalarak sınır güvenliğini sağlar, orman yangınlarını takip eder veya sivil savunma kuvvetlerine canlı hava desteği sunar.",
+      "highlights": [
+        { "title": "Menzil", "desc": "200 km", "icon": "Map" },
+        { "title": "Görev", "desc": "12 Saat", "icon": "Clock" },
+        { "title": "İrtifa", "desc": "15,000 ft", "icon": "Shield" },
+        { "title": "Sensör", "desc": "EO/IR", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "Menzil",
-          "value": "200 km"
+          "title": "Gece ve Gündüz Kesintisiz Gözetleme",
+          "description": "Termal görüntüleme, kızılötesi ve yüksek çözünürlüklü gündüz kameralarının birleşimi ile karanlığın veya sisin ardındaki her hareketi anında tespit eder."
         },
         {
-          "title": "Görev Süresi",
-          "value": "12 Saat"
+          "title": "Gerçek Zamanlı Veri Aktarımı",
+          "description": "Kriptolu veri bağları üzerinden yüksek çözünürlüklü görüntü ve istihbarat verilerini sıfır gecikme ile komuta kontrol merkezine iletir."
         },
         {
-          "title": "İrtifa",
-          "value": "15,000 ft"
-        },
-        {
-          "title": "Sensörler",
-          "value": "EO/IR Lazer"
+          "title": "Sessiz Uçuş ve Düşük Görünürlük",
+          "description": "Akustik ve görsel izini en aza indiren özel aerodinamik yapısı sayesinde düşman sahasında tamamen sessiz ve görünmez bir şekilde bilgi toplar."
         }
+      ],
+      "features": [
+        { "title": "Menzil", "value": "200 km" },
+        { "title": "Görev Süresi", "value": "12 Saat" },
+        { "title": "İrtifa", "value": "15,000 ft" },
+        { "title": "Sensörler", "value": "EO/IR Lazer" }
       ]
     },
     "en": {
       "name": "İzci",
       "category": "Surveillance UAV",
       "breadcrumb": "Defense > Surveillance > İzci",
+      "tagline": "Uninterrupted Vision Without Borders",
       "description": "Tactical UAV system providing uninterrupted intelligence, reconnaissance, and surveillance (ISR) day and night with advanced electro-optical and infrared sensors.",
-      "features": [
+      "details": "By staying airborne for days at high altitudes, it ensures border security, monitors forest fires, or provides live aerial support to civil defense forces.",
+      "highlights": [
+        { "title": "Range", "desc": "200 km", "icon": "Map" },
+        { "title": "Endurance", "desc": "12 Hours", "icon": "Clock" },
+        { "title": "Altitude", "desc": "15,000 ft", "icon": "Shield" },
+        { "title": "Sensors", "desc": "EO/IR", "icon": "Sun" }
+      ],
+      "capabilities": [
         {
-          "title": "Range",
-          "value": "200 km"
+          "title": "Uninterrupted Day and Night Surveillance",
+          "description": "Instantly detects every movement behind darkness or fog by combining thermal imaging, infrared, and high-resolution daytime cameras."
         },
         {
-          "title": "Endurance",
-          "value": "12 Hours"
+          "title": "Real-Time Data Transmission",
+          "description": "Transmits high-resolution video and intelligence data with zero latency to the command and control center via encrypted data links."
         },
         {
-          "title": "Altitude",
-          "value": "15,000 ft"
-        },
-        {
-          "title": "Sensors",
-          "value": "EO/IR Laser"
+          "title": "Silent Flight and Low Visibility",
+          "description": "Gathers information completely silently and invisibly in enemy territory thanks to its special aerodynamic structure minimizing acoustic and visual signatures."
         }
+      ],
+      "features": [
+        { "title": "Range", "value": "200 km" },
+        { "title": "Endurance", "value": "12 Hours" },
+        { "title": "Altitude", "value": "15,000 ft" },
+        { "title": "Sensors", "value": "EO/IR Laser" }
       ]
     }
   }

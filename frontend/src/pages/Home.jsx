@@ -35,13 +35,13 @@ export default function Home() {
           <img src="/assets/images/nilufer_hybrid_drone.png" alt="Averreo Industries" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0e1426] via-[#0c0e1466] to-black"></div>
-        <div className="absolute bottom-16 left-12 z-10 max-w-2xl reveal">
+        <div className="absolute bottom-16 left-6 md:left-12 z-10 max-w-2xl reveal">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight mb-4">{t('hero_title')}</h1>
           <p className="text-lg text-white/70 leading-relaxed max-w-lg">{t('hero_desc')}</p>
         </div>
       </section>
 
-      <section className="px-6 py-4 pb-6 min-h-[500px]">
+      <section className="px-4 md:px-6 py-4 pb-6 min-h-[500px]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {products ? Object.entries(products).map(([id, p], index) => {
              const lang = i18n.language === 'en' && p.en ? 'en' : 'tr';
@@ -67,13 +67,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-12 text-center max-w-4xl mx-auto reveal">
+      <section className="py-16 md:py-24 px-6 md:px-12 text-center max-w-4xl mx-auto reveal">
         <h2 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight mb-6">{t('tagline_title')}</h2>
         <p className="text-lg text-white/50 leading-relaxed max-w-2xl mx-auto">{t('tagline_desc')}</p>
       </section>
 
       <section className="px-6 pb-6">
-        <div className="pt-16 pb-8 text-center">
+        <div className="pt-10 md:pt-16 pb-8 text-center">
           <h2 className="text-4xl font-bold tracking-tight mb-2">{t('tech_title')}</h2>
           <p className="text-white/50 text-base">{t('tech_subtitle')}</p>
         </div>
@@ -85,7 +85,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-12 max-w-3xl mx-auto">
+      <section className="py-16 md:py-24 px-6 md:px-12 max-w-3xl mx-auto">
         <h2 className="text-4xl font-bold mb-3 tracking-tight reveal">{t('contact_title')}</h2>
         <p className="text-white/50 mb-12 text-lg reveal">{t('contact_desc')}</p>
         <form className="flex flex-col gap-4 reveal" onSubmit={(e) => e.preventDefault()}>
@@ -111,8 +111,8 @@ export default function Home() {
       <div className={classes} onClick={() => navigate(`/product/${id}`)}>
         <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
-          <h3 className={`font-bold tracking-tight mb-1 ${featured ? 'text-4xl' : 'text-2xl'}`}>{title}</h3>
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+          <h3 className={`font-bold tracking-tight mb-1 ${featured ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>{title}</h3>
           <p className="text-white/70 text-sm">{desc}</p>
         </div>
         <div className="absolute bottom-8 right-8 z-10 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
@@ -124,7 +124,7 @@ export default function Home() {
 
   function CapabilityCard({ icon, title, desc, delay }) {
     return (
-      <div className={`cap-card reveal reveal-delay-${delay} bg-[#080808] border border-white/5 rounded-xl p-8 hover:-translate-y-1 hover:border-white/10 transition-all relative overflow-hidden group`}>
+      <div className={`cap-card reveal reveal-delay-${delay} bg-[#080808] border border-white/5 rounded-xl p-6 md:p-8 hover:-translate-y-1 hover:border-white/10 transition-all relative overflow-hidden group`}>
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
         <div className="w-12 h-12 text-white/70 mb-6 [&>svg]:w-full [&>svg]:h-full [&>svg]:stroke-[1.5px]">{icon}</div>
         <h3 className="text-xl font-semibold mb-3">{title}</h3>

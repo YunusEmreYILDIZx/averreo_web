@@ -46,56 +46,12 @@
     "tr": {
       "heroTitle": "Haberler & Basın Odası",
       "heroSubtitle": "Averreo Industries'ten en son gelişmeler ve duyurular.",
-      "news": [
-        {
-          "date": "12 Mayıs 2026",
-          "title": "Averreo Industries, Yeni 'Sokak' Operasyonel İHA'sını Tanıttı",
-          "desc": "Tam otonom uçuş kabiliyeti ve gelişmiş hedef tespit algoritmalarıyla donatılan yeni nesil 'Sokak', saha testlerini başarıyla tamamladı.",
-          "link": "#",
-          "img": ""
-        },
-        {
-          "date": "28 Nisan 2026",
-          "title": "Uluslararası Savunma Fuarı'nda Stratejik Ortaklıklar",
-          "desc": "Global savunma ve havacılık fuarında, Averreo olarak NATO müttefiki ülkelerle teknoloji transferi ve ortak üretim görüşmeleri gerçekleştirdik.",
-          "link": "#",
-          "img": ""
-        },
-        {
-          "date": "03 Nisan 2026",
-          "title": "Sürü Zekası (Swarm) Testleri Tamamlandı",
-          "desc": "Birden fazla platformun aynı anda haberleşerek ve çarpışmadan görev icra edebildiği yeni nesil sürü zekası modülümüzün entegrasyonu tamamlandı.",
-          "link": "#",
-          "img": ""
-        }
-      ]
+      "news": []
     },
     "en": {
       "heroTitle": "News & Press Room",
       "heroSubtitle": "Latest developments and announcements from Averreo Industries.",
-      "news": [
-        {
-          "date": "May 12, 2026",
-          "title": "Averreo Industries Introduces New 'Sokak' Operational UAV",
-          "desc": "Equipped with fully autonomous flight capability and advanced target detection algorithms, the new generation 'Sokak' has successfully completed field tests.",
-          "link": "#",
-          "img": ""
-        },
-        {
-          "date": "April 28, 2026",
-          "title": "Strategic Partnerships at the International Defense Exhibition",
-          "desc": "At the global defense and aerospace exhibition, Averreo held technology transfer and joint production talks with NATO allied countries.",
-          "link": "#",
-          "img": ""
-        },
-        {
-          "date": "April 03, 2026",
-          "title": "Swarm Intelligence Tests Completed",
-          "desc": "The integration of our next-generation swarm intelligence module, which enables multiple platforms to communicate and perform missions simultaneously without colliding, has been completed.",
-          "link": "#",
-          "img": ""
-        }
-      ]
+      "news": []
     }
   },
   "liderlik": {
@@ -148,4 +104,4 @@
       ]
     }
   }
-}
+}

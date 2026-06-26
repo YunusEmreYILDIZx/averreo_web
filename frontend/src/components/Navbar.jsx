@@ -24,11 +24,13 @@ export default function Navbar() {
 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
-    setIsMobileMenuOpen(false); // Close menu on language change
+    setIsMobileMenuOpen(false);
   };
 
-  const defenseProducts = products ? Object.entries(products).filter(([_, p]) => p.tr.breadcrumb.toLowerCase().includes('savunma')) : [];
-  const industryProducts = products ? Object.entries(products).filter(([_, p]) => p.tr.breadcrumb.toLowerCase().includes('endüstri')) : [];
+  const platforms = products ? Object.entries(products) : [];
+  const nameOf = (p) => (i18n.language === 'en' && p.en ? p.en.name : p.tr.name);
+
+  const navLinkClass = "text-white/70 hover:text-white px-4 h-16 flex items-center font-medium transition-colors";
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-10 h-16 bg-black/95 backdrop-blur-md border-b border-white/5 transition-all">
@@ -42,50 +44,25 @@ export default function Navbar() {
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center space-x-1">
         <div className="group relative">
-          <button className="text-white/70 hover:text-white px-4 h-16 flex items-center gap-1 font-medium transition-colors">
-            {t('nav_defense')} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
+          <button className="text-white/70 hover:text-white px-4 h-16 flex items-center gap-1 font-medium transition-colors" aria-haspopup="true">
+            {t('nav_platforms')} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
           </button>
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex group-focus-within:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 gap-1 shadow-2xl w-48">
-            {defenseProducts.length > 0 ? defenseProducts.map(([id, p]) => (
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex group-focus-within:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 gap-1 shadow-2xl w-56">
+            {platforms.length > 0 ? platforms.map(([id, p]) => (
               <Link key={id} to={`/product/${id}`} className="text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors font-medium whitespace-nowrap">
-                {i18n.language === 'en' && p.en ? p.en.name : p.tr.name}
+                {nameOf(p)}
               </Link>
-            )) : <span className="text-white/50 px-4 py-3 text-sm">Yükleniyor...</span>}
+            )) : <span className="text-white/50 px-4 py-3 text-sm">…</span>}
+            <Link to="/platformlar" className="text-white/50 hover:text-white hover:bg-white/5 px-4 py-2 rounded-xl transition-colors text-xs uppercase tracking-widest mt-1 border-t border-white/5 pt-3">
+              {i18n.language === 'en' ? 'All Platforms' : 'Tüm Platformlar'}
+            </Link>
           </div>
         </div>
 
-        <div className="group relative">
-          <button className="text-white/70 hover:text-white px-4 h-16 flex items-center gap-1 font-medium transition-colors">
-            {t('nav_industry')} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
-          </button>
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex group-focus-within:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 gap-1 shadow-2xl w-48">
-            {industryProducts.length > 0 ? industryProducts.map(([id, p]) => (
-              <Link key={id} to={`/product/${id}`} className="text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors font-medium whitespace-nowrap">
-                {i18n.language === 'en' && p.en ? p.en.name : p.tr.name}
-              </Link>
-            )) : <span className="text-white/50 px-4 py-3 text-sm">Yükleniyor...</span>}
-          </div>
-        </div>
-
-        <div className="group relative">
-          <button className="text-white/70 hover:text-white px-4 h-16 flex items-center gap-1 font-medium transition-colors">
-            {t('nav_company')} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
-          </button>
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex group-focus-within:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 gap-2 shadow-2xl w-56">
-            <Link to="/misyon" className="text-white/70 hover:text-white hover:bg-white/5 p-3 rounded-xl flex flex-col">
-              <strong className="text-white">{t('nav_mission')}</strong>
-              <span className="text-xs text-white/50">{t('nav_mission_desc')}</span>
-            </Link>
-            <Link to="/haberler" className="text-white/70 hover:text-white hover:bg-white/5 p-3 rounded-xl flex flex-col">
-              <strong className="text-white">{t('nav_news')}</strong>
-              <span className="text-xs text-white/50">{t('nav_news_desc')}</span>
-            </Link>
-            <Link to="/liderlik" className="text-white/70 hover:text-white hover:bg-white/5 p-3 rounded-xl flex flex-col">
-              <strong className="text-white">{t('nav_leadership')}</strong>
-              <span className="text-xs text-white/50">{t('nav_leadership_desc')}</span>
-            </Link>
-          </div>
-        </div>
+        <Link to="/cozumler" className={navLinkClass}>{t('nav_solutions')}</Link>
+        <Link to="/hakkimizda" className={navLinkClass}>{t('nav_about')}</Link>
+        <Link to="/ekip" className={navLinkClass}>{t('nav_team')}</Link>
+        <Link to="/iletisim" className={navLinkClass}>{t('nav_contact')}</Link>
       </div>
 
       <div className="hidden md:flex items-center space-x-4">
@@ -94,7 +71,7 @@ export default function Navbar() {
           <button onClick={() => changeLanguage('en')} aria-label="English" aria-pressed={i18n.language === 'en'} className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${i18n.language === 'en' ? 'bg-white/20 text-white' : 'text-white/50 hover:text-white'}`}>EN</button>
         </div>
       </div>
-      
+
       {/* Mobile Toggle Button */}
       <button
         className="md:hidden text-white/70 hover:text-white p-2 transition-colors"
@@ -109,39 +86,28 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="absolute top-16 left-0 w-full h-[calc(100vh-4rem)] bg-[#050505] border-t border-white/10 flex flex-col md:hidden overflow-y-auto pb-10">
           <div className="flex flex-col p-6 space-y-8">
-            
-            {/* Savunma */}
+
+            {/* Platformlar */}
             <div>
-              <h3 className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">{t('nav_defense')}</h3>
+              <h3 className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">{t('nav_platforms')}</h3>
               <div className="flex flex-col gap-3">
-                {defenseProducts.map(([id, p]) => (
+                {platforms.map(([id, p]) => (
                   <Link key={id} to={`/product/${id}`} onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">
-                    {i18n.language === 'en' && p.en ? p.en.name : p.tr.name}
+                    {nameOf(p)}
                   </Link>
                 ))}
+                <Link to="/platformlar" onClick={() => setIsMobileMenuOpen(false)} className="text-white/50 text-sm uppercase tracking-widest mt-1">
+                  {i18n.language === 'en' ? 'All Platforms' : 'Tüm Platformlar'}
+                </Link>
               </div>
             </div>
 
-            {/* Endüstri */}
-            <div>
-              <h3 className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">{t('nav_industry')}</h3>
-              <div className="flex flex-col gap-3">
-                {industryProducts.map(([id, p]) => (
-                  <Link key={id} to={`/product/${id}`} onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">
-                    {i18n.language === 'en' && p.en ? p.en.name : p.tr.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Kurumsal */}
-            <div>
-              <h3 className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">{t('nav_company')}</h3>
-              <div className="flex flex-col gap-3">
-                <Link to="/misyon" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_mission')}</Link>
-                <Link to="/haberler" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_news')}</Link>
-                <Link to="/liderlik" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_leadership')}</Link>
-              </div>
+            {/* Diğer sayfalar */}
+            <div className="flex flex-col gap-3">
+              <Link to="/cozumler" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_solutions')}</Link>
+              <Link to="/hakkimizda" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_about')}</Link>
+              <Link to="/ekip" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_team')}</Link>
+              <Link to="/iletisim" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_contact')}</Link>
             </div>
 
             {/* Language Selection */}

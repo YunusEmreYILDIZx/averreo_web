@@ -20,13 +20,20 @@
   }
 
   html { scroll-behavior: smooth; }
-  
+
   body {
     font-family: var(--font);
     background-color: var(--bg);
     color: var(--white);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* Keyboard navigation focus ring (does not affect mouse users) */
+  :focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 

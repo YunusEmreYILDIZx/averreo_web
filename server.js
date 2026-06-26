@@ -1,8 +1,34 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const PORT = 8080;
+
+// Admin users are loaded from the ADMIN_USERS env var (see /etc/averreo/averreo.env).
+// Format: JSON array of { username, salt, hash } where hash = scrypt(password, salt, 64) hex.
+// Never store plaintext credentials in code.
+function loadAdminUsers() {
+  try {
+    return JSON.parse(process.env.ADMIN_USERS || '[]');
+  } catch (e) {
+    console.error('Invalid ADMIN_USERS env var:', e.message);
+    return [];
+  }
+}
+
+function verifyCredentials(username, password) {
+  const user = loadAdminUsers().find(u => u.username === username);
+  if (!user) return false;
+  let derived;
+  try {
+    derived = crypto.scryptSync(password, user.salt, 64);
+  } catch {
+    return false;
+  }
+  const expected = Buffer.from(user.hash, 'hex');
+  return derived.length === expected.length && crypto.timingSafeEqual(derived, expected);
+}
 
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -16,12 +42,6 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon',
 };
 
-const ADMIN_USERS = [
-  { username: 'Oracle', password: 'Emre16' },
-  { username: 'Keymaker', password: 'Yasin55' },
-  { username: 'Architect', password: 'Mehmet20' }
-];
-
 const server = http.createServer((req, res) => {
   console.log(`${req.method} ${req.url}`);
 
@@ -32,7 +52,7 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       try {
         const data = JSON.parse(body);
-        const isValidUser = ADMIN_USERS.some(u => u.username === data.username && u.password === data.password);
+        const isValidUser = verifyCredentials(data.username, data.password);
         if (isValidUser) {
           res.writeHead(200, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ success: true, token: 'fake-jwt-token' }));
@@ -176,20 +196,25 @@ const server = http.createServer((req, res) => {
     let contentType = MIME_TYPES[extname] || 'application/octet-stream';
     
     let absPath;
+    let cacheControl;
     // Images and videos are in the root /assets directory
     if (filePath.startsWith('/assets/images/') || filePath.startsWith('/assets/videos/')) {
       absPath = path.join(__dirname, filePath);
+      // Fixed filenames (can be re-uploaded via admin), so cache for a day with revalidation.
+      cacheControl = 'public, max-age=86400, stale-while-revalidate=604800';
     } else {
       // Vite compiled JS/CSS assets are in /frontend/dist/assets/
       absPath = path.join(__dirname, 'frontend', 'dist', filePath);
+      // Content-hashed filenames, safe to cache immutably for a year.
+      cacheControl = 'public, max-age=31536000, immutable';
     }
-    
+
     fs.readFile(absPath, (err, content) => {
       if (err) {
         res.writeHead(404);
         res.end('404 Not Found');
       } else {
-        res.writeHead(200, { 'Content-Type': contentType });
+        res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': cacheControl });
         res.end(content, 'utf-8');
       }
     });

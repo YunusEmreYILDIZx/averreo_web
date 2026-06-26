@@ -7,6 +7,18 @@ export default function Home() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [products, setProducts] = useState(null);
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [sent, setSent] = useState(false);
+
+  const handleFormChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = form.subject || `${form.name} — Averreo`;
+    const body = `${form.message}\n\n— ${form.name} (${form.email})`;
+    window.location.href = `mailto:info@averreo.com.tr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setSent(true);
+  };
 
   useEffect(() => {
     fetch('/api/products')
@@ -32,7 +44,7 @@ export default function Home() {
     <>
       <section className="relative w-full h-screen overflow-hidden mt-16">
         <div className="absolute inset-0">
-          <img src="/assets/images/nilufer_hybrid_drone.png" alt="Averreo Industries" className="w-full h-full object-cover" />
+          <img src="/assets/images/nilufer_hybrid_drone.png" alt="Averreo Industries" className="w-full h-full object-cover" fetchpriority="high" decoding="async" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0e1426] via-[#0c0e1466] to-black"></div>
         <div className="absolute bottom-16 left-6 md:left-12 z-10 max-w-2xl reveal">
@@ -88,14 +100,15 @@ export default function Home() {
       <section className="py-16 md:py-24 px-6 md:px-12 max-w-3xl mx-auto">
         <h2 className="text-4xl font-bold mb-3 tracking-tight reveal">{t('contact_title')}</h2>
         <p className="text-white/50 mb-12 text-lg reveal">{t('contact_desc')}</p>
-        <form className="flex flex-col gap-4 reveal" onSubmit={(e) => e.preventDefault()}>
+        <form className="flex flex-col gap-4 reveal" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row gap-4">
-            <input type="text" placeholder={t('form_name')} required className="flex-1 p-4 bg-white/5 border border-white/10 rounded-xl focus:border-white/30 outline-none transition-colors" />
-            <input type="email" placeholder={t('form_email')} required className="flex-1 p-4 bg-white/5 border border-white/10 rounded-xl focus:border-white/30 outline-none transition-colors" />
+            <input type="text" name="name" value={form.name} onChange={handleFormChange} placeholder={t('form_name')} aria-label={t('form_name')} required className="flex-1 p-4 bg-white/5 border border-white/10 rounded-xl focus:border-white/30 outline-none transition-colors" />
+            <input type="email" name="email" value={form.email} onChange={handleFormChange} placeholder={t('form_email')} aria-label={t('form_email')} required className="flex-1 p-4 bg-white/5 border border-white/10 rounded-xl focus:border-white/30 outline-none transition-colors" />
           </div>
-          <input type="text" placeholder={t('form_subject')} className="p-4 bg-white/5 border border-white/10 rounded-xl focus:border-white/30 outline-none transition-colors" />
-          <textarea placeholder={t('form_message')} required className="p-4 bg-white/5 border border-white/10 rounded-xl focus:border-white/30 outline-none transition-colors min-h-[140px] resize-y"></textarea>
+          <input type="text" name="subject" value={form.subject} onChange={handleFormChange} placeholder={t('form_subject')} aria-label={t('form_subject')} className="p-4 bg-white/5 border border-white/10 rounded-xl focus:border-white/30 outline-none transition-colors" />
+          <textarea name="message" value={form.message} onChange={handleFormChange} placeholder={t('form_message')} aria-label={t('form_message')} required className="p-4 bg-white/5 border border-white/10 rounded-xl focus:border-white/30 outline-none transition-colors min-h-[140px] resize-y"></textarea>
           <button type="submit" className="mt-2 px-8 py-4 bg-white text-black font-bold rounded-xl self-start hover:-translate-y-1 hover:opacity-90 transition-all">{t('btn_send')}</button>
+          {sent && <p role="status" className="text-green-400/90 text-sm mt-1">{t('form_success')}</p>}
         </form>
       </section>
     </>
@@ -108,8 +121,15 @@ export default function Home() {
     else classes += "min-h-[300px] ";
 
     return (
-      <div className={classes} onClick={() => navigate(`/product/${id}`)}>
-        <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      <div
+        className={`${classes}focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60`}
+        onClick={() => navigate(`/product/${id}`)}
+        role="link"
+        tabIndex={0}
+        aria-label={title}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate(`/product/${id}`); } }}
+      >
+        <img src={image} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
           <h3 className={`font-bold tracking-tight mb-1 ${featured ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>{title}</h3>

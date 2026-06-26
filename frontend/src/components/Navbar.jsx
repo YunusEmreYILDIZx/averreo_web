@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Menu, X, ChevronDown, Globe } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
@@ -45,7 +45,7 @@ export default function Navbar() {
           <button className="text-white/70 hover:text-white px-4 h-16 flex items-center gap-1 font-medium transition-colors">
             {t('nav_defense')} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
           </button>
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 gap-1 shadow-2xl w-48">
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex group-focus-within:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 gap-1 shadow-2xl w-48">
             {defenseProducts.length > 0 ? defenseProducts.map(([id, p]) => (
               <Link key={id} to={`/product/${id}`} className="text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors font-medium whitespace-nowrap">
                 {i18n.language === 'en' && p.en ? p.en.name : p.tr.name}
@@ -58,7 +58,7 @@ export default function Navbar() {
           <button className="text-white/70 hover:text-white px-4 h-16 flex items-center gap-1 font-medium transition-colors">
             {t('nav_industry')} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
           </button>
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 gap-1 shadow-2xl w-48">
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex group-focus-within:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 gap-1 shadow-2xl w-48">
             {industryProducts.length > 0 ? industryProducts.map(([id, p]) => (
               <Link key={id} to={`/product/${id}`} className="text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors font-medium whitespace-nowrap">
                 {i18n.language === 'en' && p.en ? p.en.name : p.tr.name}
@@ -71,7 +71,7 @@ export default function Navbar() {
           <button className="text-white/70 hover:text-white px-4 h-16 flex items-center gap-1 font-medium transition-colors">
             {t('nav_company')} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
           </button>
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 gap-2 shadow-2xl w-56">
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 hidden group-hover:flex group-focus-within:flex flex-col bg-[#080808]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 gap-2 shadow-2xl w-56">
             <Link to="/misyon" className="text-white/70 hover:text-white hover:bg-white/5 p-3 rounded-xl flex flex-col">
               <strong className="text-white">{t('nav_mission')}</strong>
               <span className="text-xs text-white/50">{t('nav_mission_desc')}</span>
@@ -90,15 +90,17 @@ export default function Navbar() {
 
       <div className="hidden md:flex items-center space-x-4">
         <div className="flex bg-white/5 rounded-full p-1 border border-white/10">
-          <button onClick={() => changeLanguage('tr')} className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${i18n.language === 'tr' ? 'bg-white/20 text-white' : 'text-white/50 hover:text-white'}`}>TR</button>
-          <button onClick={() => changeLanguage('en')} className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${i18n.language === 'en' ? 'bg-white/20 text-white' : 'text-white/50 hover:text-white'}`}>EN</button>
+          <button onClick={() => changeLanguage('tr')} aria-label="Türkçe" aria-pressed={i18n.language === 'tr'} className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${i18n.language === 'tr' ? 'bg-white/20 text-white' : 'text-white/50 hover:text-white'}`}>TR</button>
+          <button onClick={() => changeLanguage('en')} aria-label="English" aria-pressed={i18n.language === 'en'} className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${i18n.language === 'en' ? 'bg-white/20 text-white' : 'text-white/50 hover:text-white'}`}>EN</button>
         </div>
       </div>
       
       {/* Mobile Toggle Button */}
-      <button 
+      <button
         className="md:hidden text-white/70 hover:text-white p-2 transition-colors"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label={isMobileMenuOpen ? 'Menüyü kapat' : 'Menüyü aç'}
+        aria-expanded={isMobileMenuOpen}
       >
         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>

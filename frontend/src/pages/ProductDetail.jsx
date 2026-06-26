@@ -45,7 +45,7 @@ export default function ProductDetail() {
               <source src={productData.video} type="video/mp4" />
             </video>
           ) : (
-            <img src={imgPath} alt={content.name} className="w-full h-full object-cover opacity-40 scale-105 animate-[pulse_10s_ease-in-out_infinite_alternate]" />
+            <img src={imgPath} alt={content.name} fetchpriority="high" decoding="async" className="w-full h-full object-cover opacity-40 scale-105 animate-[pulse_10s_ease-in-out_infinite_alternate]" />
           )}
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-[#050505]"></div>
         </div>
@@ -70,11 +70,18 @@ export default function ProductDetail() {
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="px-8 py-4 w-full sm:w-auto bg-white text-black font-bold rounded-full hover:scale-105 transition-transform duration-300">
+            <a
+              href={`mailto:info@averreo.com.tr?subject=${encodeURIComponent((i18n.language === 'en' ? 'Demo Request: ' : 'Demo Talebi: ') + content.name)}`}
+              className="px-8 py-4 w-full sm:w-auto bg-white text-black font-bold rounded-full hover:scale-105 transition-transform duration-300 text-center"
+            >
               {i18n.language === 'en' ? 'Request a Demo' : 'Demo Talebi'}
-            </button>
-            <button className="px-8 py-4 w-full sm:w-auto bg-transparent border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-colors duration-300 backdrop-blur-sm">
-              {i18n.language === 'en' ? 'Download Specs' : 'Bülten İndir'}
+            </a>
+            <button
+              type="button"
+              onClick={() => document.getElementById('specs')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 w-full sm:w-auto bg-transparent border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-colors duration-300 backdrop-blur-sm"
+            >
+              {i18n.language === 'en' ? 'Technical Specs' : 'Teknik Özellikler'}
             </button>
           </div>
         </div>
@@ -118,7 +125,7 @@ export default function ProductDetail() {
               <div key={idx} className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-12 md:gap-24`}>
                 <div className="flex-1 w-full relative">
                   <div className="aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center relative group">
-                    <img src={imgPath} alt={cap.title} className="w-full h-full object-cover opacity-50 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
+                    <img src={imgPath} alt={cap.title} loading="lazy" decoding="async" className="w-full h-full object-cover opacity-50 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                   </div>
                 </div>
@@ -134,7 +141,7 @@ export default function ProductDetail() {
       )}
 
       {/* Technical Specifications & Video */}
-      <section className="px-6 md:px-12 py-32 max-w-7xl mx-auto">
+      <section id="specs" className="px-6 md:px-12 py-32 max-w-7xl mx-auto scroll-mt-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           <div>
             <h3 className="text-4xl font-bold mb-12 text-white tracking-tight">
@@ -156,7 +163,7 @@ export default function ProductDetail() {
             </h3>
             {productData.video ? (
               <div className="relative w-full aspect-video rounded-[2.5rem] overflow-hidden bg-black border border-white/10 flex items-center justify-center group cursor-pointer flex-1">
-                <img src={imgPath} alt="Video Thumbnail" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" />
+                <img src={imgPath} alt="Video Thumbnail" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
                 <div className="relative z-10 w-24 h-24 bg-white/10 border border-white/20 rounded-full flex items-center justify-center backdrop-blur-xl group-hover:bg-white group-hover:scale-110 transition-all duration-300">
                   <Play className="w-10 h-10 ml-2 text-white group-hover:text-black transition-colors" fill="currentColor" />
@@ -182,7 +189,7 @@ export default function ProductDetail() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {productData.gallery.map((img, idx) => (
               <div key={idx} className="relative aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/5 group cursor-pointer">
-                <img src={img} alt="Galeri" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" />
+                <img src={img} alt="Galeri" loading="lazy" decoding="async" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" />
               </div>
             ))}
           </div>

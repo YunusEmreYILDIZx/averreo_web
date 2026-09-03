@@ -1,7 +1,8 @@
 {
   "dehliz": {
     "id": "dehliz",
-    "image": "assets/images/Averreo Quadcopter Drone _ Tunnel (1).png",
+    "image": "assets/images/dehliz_4k.png?v=2",
+    "video": "dehliz.mp4",
     "status": { "tr": "Ar-Ge / Geliştirme Aşamasında", "en": "In R&D / Development" },
     "tr": {
       "name": "Dehliz",
@@ -13,15 +14,18 @@
       "capabilities": [
         {
           "title": "Çarpışmaya Toleranslı Tasarım",
-          "description": "Koruyucu kafes yapısı sayesinde dar tünel ve boru hatlarında temaslardan etkilenmeden uçuşa devam etme hedefi — hem platformu hem ortamı koruyarak."
+          "description": "Koruyucu kafes yapısı sayesinde dar tünel ve boru hatlarında temaslardan etkilenmeden uçuşa devam etme hedefi — hem platformu hem ortamı koruyarak.",
+          "image": "/assets/images/dehliz_cage.jpg"
         },
         {
           "title": "Gerçek Zamanlı 3B Algılama",
-          "description": "Uçuş sırasında ortamın 3B haritasını çıkararak denetimi dijitalleştirme ve sonradan analiz edilebilir kayıt üretme yaklaşımı."
+          "description": "Uçuş sırasında ortamın 3B haritasını çıkararak denetimi dijitalleştirme ve sonradan analiz edilebilir kayıt üretme yaklaşımı.",
+          "image": "/assets/images/dehliz_3d_mapping.png"
         },
         {
           "title": "Karanlıkta Görüş",
-          "description": "Yüksek güçlü aydınlatma ve uygun açılı görüntüleme ile zifiri karanlıkta çatlak, korozyon ve kusur tespitine odaklı tasarım."
+          "description": "Yüksek güçlü aydınlatma ve uygun açılı görüntüleme ile zifiri karanlıkta çatlak, korozyon ve kusur tespitine odaklı tasarım.",
+          "image": "/assets/images/dehliz_pipeline_dark_new.jpg?v=1"
         }
       ],
       "highlights": [],
@@ -37,77 +41,90 @@
       "capabilities": [
         {
           "title": "Collision-Tolerant Design",
-          "description": "A protective cage structure intended to keep flying despite contact in narrow tunnels and pipelines — protecting both the platform and the environment."
+          "description": "A protective cage structure intended to keep flying despite contact in narrow tunnels and pipelines — protecting both the platform and the environment.",
+          "image": "/assets/images/dehliz_cage.jpg"
         },
         {
           "title": "Real-Time 3D Perception",
-          "description": "An approach that maps the environment in 3D during flight, digitizing inspection and producing records that can be analysed afterwards."
+          "description": "An approach that maps the environment in 3D during flight, digitizing inspection and producing records that can be analysed afterwards.",
+          "image": "/assets/images/dehliz_3d_mapping.png"
         },
         {
           "title": "Vision in the Dark",
-          "description": "Designed around high-power lighting and well-angled imaging to focus on detecting cracks, corrosion, and defects in complete darkness."
+          "description": "Designed around high-power lighting and well-angled imaging to focus on detecting cracks, corrosion, and defects in complete darkness.",
+          "image": "/assets/images/dehliz_pipeline_dark_new.jpg?v=1"
         }
       ],
       "highlights": [],
       "features": []
     }
   },
-  "nilufer": {
-    "id": "nilufer",
-    "image": "assets/images/nilufer_hybrid_drone.png",
+
+  "bereket": {
+    "id": "bereket",
+    "image": "assets/images/bereket_4k.png",
+    "video": "bereket.mp4",
     "status": { "tr": "Ar-Ge / Geliştirme Aşamasında", "en": "In R&D / Development" },
     "tr": {
-      "name": "Nilüfer",
-      "category": "Hibrit Hava-Su Altı Platformu",
-      "breadcrumb": "Platformlar > Nilüfer",
-      "tagline": "Gökyüzünden Derinliklere, Tek Platform",
-      "description": "Nilüfer, hem havada uçabilen hem de suya inerek su altında görev yapabilen hibrit bir keşif ve denetim platformu konseptidir.",
-      "details": "Liman, baraj, köprü ayağı, deniz altyapısı ve su altı yapılarının keşfi bugün ayrı hava ve su araçları gerektiriyor. Nilüfer ile hedefimiz; havadan hızla bölgeye ulaşıp suya geçerek tek bir otonom platformla keşif ve denetim yapabilmek — iki ortam arasındaki sınırı kaldırmak.",
+      "name": "Bereket",
+      "category": "Tarımsal Otonom Sistem",
+      "breadcrumb": "Platformlar > Bereket",
+      "tagline": "Tarlanızda Veri Odaklı Verim",
+      "description": "Bereket, hassas tarım uygulamaları, otonom püskürtme ve mahsul analizi için geliştirdiğimiz yüksek kapasiteli tarımsal insansız hava aracı platformudur.",
+      "details": "Geniş arazilerde ilaçlama ve gübreleme bugün çoğunlukla tek tip ve israfa açık. Bereket ile hedefimiz; multispektral analiz ve hassas konumlandırma kullanarak girdiyi sadece ihtiyaç olan yere uygulayan, hem verimi artıran hem toprağı koruyan veri odaklı bir tarım yaklaşımı sunmak.",
       "capabilities": [
         {
-          "title": "Hava–Su Geçiş Kabiliyeti",
-          "description": "Havadan göreve ulaşıp su yüzeyine inerek su altına geçebilen tek platform yaklaşımı — ayrı araçlara olan ihtiyacı azaltma hedefi."
+          "title": "Hassas İlaçlama & Mikro Nozul Püskürtme",
+          "description": "Yüksek hassasiyetli sıvı dağıtım sistemi ve mikro nozul püskürtme mimarisi ile ilaç veya gübre girdisini doğrudan hedef yaprağa ulaştırır — sıfır israf ve maksimum verim.",
+          "image": "/assets/images/bereket_close_up.jpg"
         },
         {
-          "title": "Su Altı Keşif ve Denetim",
-          "description": "Deniz altyapısı, liman ve baraj gibi yapıların su altı bölümlerini görüntüleme ve denetleme odaklı görev profili."
+          "title": "Multispektral Mahsul Analizi",
+          "description": "Kamera ve sensör sistemiyle bitki rekoltesini, klorofil miktarını ve rekolte stresini henüz gözle görünmeden tespit eden hava analiz altyapısı.",
+          "image": "/assets/images/bereket_multispectral.png?v=3"
         },
         {
-          "title": "Otonom Seyir",
-          "description": "Her iki ortamda da operatör yükünü azaltan otonom navigasyon ve görev planlama yaklaşımı."
+          "title": "Zorlu Arazi & Otonom Navigasyon",
+          "description": "Teraslı arazilerden geniş buğday ve mısır tarlalarına kadar dinamik irtifa takibi (Terrain Following) ile tam otonom rota takibi ve görev icrası.",
+          "image": "/assets/images/bereket_sunset.jpg"
         }
       ],
       "highlights": [],
       "features": []
     },
     "en": {
-      "name": "Nilüfer",
-      "category": "Hybrid Air-Underwater Platform",
-      "breadcrumb": "Platforms > Nilüfer",
-      "tagline": "One Platform, from Skies to Depths",
-      "description": "Nilüfer is a hybrid reconnaissance and inspection platform concept that can both fly through the air and descend into water to operate underwater.",
-      "details": "Inspecting harbours, dams, bridge foundations, marine infrastructure, and underwater structures today requires separate aerial and underwater vehicles. With Nilüfer, our goal is to reach an area quickly by air and transition into the water to perform reconnaissance and inspection with a single autonomous platform — removing the boundary between the two domains.",
+      "name": "Bereket",
+      "category": "Agricultural Autonomous System",
+      "breadcrumb": "Platforms > Bereket",
+      "tagline": "Data-Driven Yield in Your Field",
+      "description": "Bereket is a high-capacity agricultural unmanned aerial vehicle platform developed for precision farming applications, autonomous spraying, and crop analytics.",
+      "details": "Spraying and fertilizing large fields today is mostly uniform and prone to waste. With Bereket, our goal is to offer a data-driven approach that uses multispectral analysis and precise positioning to apply inputs only where needed — increasing yield while protecting the soil.",
       "capabilities": [
         {
-          "title": "Air–Water Transition",
-          "description": "A single-platform approach that reaches the mission by air and descends to the surface to move underwater — aiming to reduce the need for separate vehicles."
+          "title": "Precision Spraying & Micro Nozzle Delivery",
+          "description": "High-precision liquid distribution and micro nozzle delivery system applying chemical or fertilizer inputs directly to target foliage with zero waste.",
+          "image": "/assets/images/bereket_close_up.jpg"
         },
         {
-          "title": "Underwater Reconnaissance & Inspection",
-          "description": "A mission profile focused on imaging and inspecting the underwater portions of structures such as marine infrastructure, harbours, and dams."
+          "title": "Multispectral Crop Analysis",
+          "description": "Airborne sensing infrastructure that detects plant stress, disease, and chlorophyll levels before they become visible to the naked eye.",
+          "image": "/assets/images/bereket_multispectral.png?v=3"
         },
         {
-          "title": "Autonomous Navigation",
-          "description": "An autonomous navigation and mission-planning approach that reduces operator workload in both domains."
+          "title": "Terrain Following & Autonomous Navigation",
+          "description": "Dynamic terrain-following autonomous flight algorithms executing missions across challenging rice terraces, wheat fields, and orchards.",
+          "image": "/assets/images/bereket_sunset.jpg"
         }
       ],
       "highlights": [],
       "features": []
     }
   },
+
   "mercan": {
     "id": "mercan",
-    "image": "assets/images/bilgin.png",
+    "image": "assets/images/mercan_4k.png",
+    "video": "mercan.mp4",
     "status": { "tr": "Ar-Ge / Geliştirme Aşamasında", "en": "In R&D / Development" },
     "tr": {
       "name": "Mercan",
@@ -119,15 +136,18 @@
       "capabilities": [
         {
           "title": "Oşinografik Sensör Yükü",
-          "description": "Su kalitesi ve çevresel parametreleri ölçmeye yönelik modüler sensör entegrasyonu odaklı tasarım."
+          "description": "Su kalitesi ve çevresel parametreleri ölçmeye yönelik modüler sensör entegrasyonu odaklı tasarım.",
+          "image": "/assets/images/mercan_sensors.png?v=2"
         },
         {
-          "title": "Enerji Verimli Uzun Görev",
-          "description": "Güneş enerjisinden faydalanarak görev süresini uzatma ve operasyonel maliyeti düşürme yaklaşımı."
+          "title": "Otonom Seyir & Akustik İletişim",
+          "description": "GPS sinyalinin ulaşmadığı su altı derinliklerinde akustik konumlandırma (USBL) ve DVL navigasyonu ile tam otonom rota takibi ve merkeze kesintisiz veri aktarımı.",
+          "image": "/assets/images/mercan_surface.png"
         },
         {
           "title": "Su Altı Örnekleme",
-          "description": "Modüler robotik müdahale ile su altı yapılarının incelenmesi ve fiziksel numune toplamaya yönelik konsept."
+          "description": "Modüler robotik müdahale ile su altı yapılarının incelenmesi ve fiziksel numune toplamaya yönelik konsept.",
+          "image": "/assets/images/mercan_sampling.png"
         }
       ],
       "highlights": [],
@@ -143,68 +163,18 @@
       "capabilities": [
         {
           "title": "Oceanographic Sensor Payload",
-          "description": "A design centred on modular sensor integration for measuring water quality and environmental parameters."
+          "description": "A design centred on modular sensor integration for measuring water quality and environmental parameters.",
+          "image": "/assets/images/mercan_sensors.png?v=2"
         },
         {
-          "title": "Energy-Efficient Long Missions",
-          "description": "An approach that uses solar energy to extend mission duration and lower operational cost."
+          "title": "Autonomous Navigation & Acoustic Comms",
+          "description": "Full autonomous mission route execution and telemetry data transfer in GPS-denied underwater depths using USBL acoustic positioning and DVL navigation.",
+          "image": "/assets/images/mercan_surface.png"
         },
         {
           "title": "Underwater Sampling",
-          "description": "A concept for inspecting underwater structures and collecting physical samples through modular robotic intervention."
-        }
-      ],
-      "highlights": [],
-      "features": []
-    }
-  },
-  "bereket": {
-    "id": "bereket",
-    "image": "assets/images/bereket.jpg",
-    "status": { "tr": "Ar-Ge / Geliştirme Aşamasında", "en": "In R&D / Development" },
-    "tr": {
-      "name": "Bereket",
-      "category": "Tarımsal Otonom Sistem",
-      "breadcrumb": "Platformlar > Bereket",
-      "tagline": "Tarlanızda Veri Odaklı Verim",
-      "description": "Bereket, hassas tarım uygulamaları ve mahsul analizi için geliştirdiğimiz tarımsal bir otonom hava aracı konseptidir.",
-      "details": "Geniş arazilerde ilaçlama ve gübreleme bugün çoğunlukla tek tip ve israfa açık. Bereket ile hedefimiz; multispektral analiz ve hassas konumlandırma kullanarak girdiyi sadece ihtiyaç olan yere uygulayan, hem verimi artıran hem toprağı koruyan veri odaklı bir tarım yaklaşımı sunmak.",
-      "capabilities": [
-        {
-          "title": "Hassas Uygulama",
-          "description": "Yüksek hassasiyetli konumlandırma ile girdinin yalnızca gerekli bölgelere uygulanması — tasarruf ve toprak koruması odaklı."
-        },
-        {
-          "title": "Multispektral Mahsul Analizi",
-          "description": "Bitki stresini ve sorunları çıplak gözle görülmeden önce tespit etmeye yönelik multispektral algılama yaklaşımı."
-        },
-        {
-          "title": "Değişken Oranlı Uygulama",
-          "description": "Reçete haritaları ile tarlanın ihtiyacına göre değişken oranlı girdi uygulayan veri odaklı yöntem."
-        }
-      ],
-      "highlights": [],
-      "features": []
-    },
-    "en": {
-      "name": "Bereket",
-      "category": "Agricultural Autonomous System",
-      "breadcrumb": "Platforms > Bereket",
-      "tagline": "Data-Driven Yield in Your Field",
-      "description": "Bereket is an agricultural autonomous aerial vehicle concept we are developing for precision agriculture applications and crop analysis.",
-      "details": "Spraying and fertilizing large fields today is mostly uniform and prone to waste. With Bereket, our goal is to offer a data-driven approach that uses multispectral analysis and precise positioning to apply inputs only where needed — increasing yield while protecting the soil.",
-      "capabilities": [
-        {
-          "title": "Precision Application",
-          "description": "Applying inputs only to the areas that need them through high-precision positioning — focused on savings and soil protection."
-        },
-        {
-          "title": "Multispectral Crop Analysis",
-          "description": "A multispectral sensing approach aimed at detecting plant stress and problems before they are visible to the naked eye."
-        },
-        {
-          "title": "Variable Rate Application",
-          "description": "A data-driven method that applies inputs at variable rates across the field based on prescription maps."
+          "description": "A concept for inspecting underwater structures and collecting physical samples through modular robotic intervention.",
+          "image": "/assets/images/mercan_sampling.png"
         }
       ],
       "highlights": [],

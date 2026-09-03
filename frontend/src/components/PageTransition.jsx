@@ -38,11 +38,12 @@ export default function PageTransition({ children }) {
         `}
       >
         <img 
-          src="/assets/images/A%20logo%20Siyah.png" 
+          src="/assets/images/logo.png" 
           alt="Averreo" 
-          className={`w-32 md:w-48 h-auto object-contain transition-all duration-[800ms] ease-out
-            ${isTransitioning ? 'scale-110 opacity-100 blur-none' : 'scale-90 opacity-0 blur-sm'}
+          className={`w-20 md:w-28 h-auto object-contain transition-all duration-[800ms] ease-out
+            ${isTransitioning ? 'scale-110 opacity-100 blur-none animate-spin' : 'scale-90 opacity-0 blur-sm'}
           `} 
+          style={{ animationDuration: '2s' }}
         />
       </div>
       

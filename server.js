@@ -40,6 +40,11 @@ const MIME_TYPES = {
   '.jpeg': 'image/jpeg',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
+  '.webp': 'image/webp',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
+  '.mov': 'video/quicktime',
+  '.ogg': 'video/ogg',
 };
 
 const server = http.createServer((req, res) => {
@@ -83,6 +88,24 @@ const server = http.createServer((req, res) => {
       } else {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(data);
+      }
+    });
+    return;
+  }
+
+  // API to handle contact form submissions (Mock)
+  if (req.method === 'POST' && req.url === '/api/contact') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', () => {
+      try {
+        const data = JSON.parse(body);
+        console.log('Received contact submission:', data);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, message: 'Message sent successfully' }));
+      } catch (e) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: e.message }));
       }
     });
     return;
@@ -150,6 +173,69 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // API to submit contact form messages (saves to data/messages.json & sends email if SMTP is set)
+  if (req.method === 'POST' && req.url === '/api/contact') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', async () => {
+      try {
+        const data = JSON.parse(body);
+        const newMsg = {
+          id: Date.now().toString(),
+          timestamp: new Date().toISOString(),
+          name: data.name,
+          email: data.email,
+          subject: data.subject || 'Yeni İletişim Formu Mesajı',
+          message: data.message,
+          recipient: 'info@averreo.com.tr'
+        };
+
+        const messagesPath = path.join(__dirname, 'data', 'messages.json');
+        let existing = [];
+        try {
+          if (fs.existsSync(messagesPath)) {
+            existing = JSON.parse(fs.readFileSync(messagesPath, 'utf8'));
+          }
+        } catch (err) {
+          console.error("Reading messages.json error:", err);
+        }
+        existing.unshift(newMsg);
+        fs.writeFileSync(messagesPath, JSON.stringify(existing, null, 2), 'utf8');
+
+        console.log(`[CONTACT] New message from ${data.name} (${data.email}) to info@averreo.com.tr`);
+
+        if (process.env.SMTP_HOST && process.env.SMTP_USER) {
+          try {
+            const nodemailer = require('nodemailer');
+            const transporter = nodemailer.createTransport({
+              host: process.env.SMTP_HOST,
+              port: parseInt(process.env.SMTP_PORT || '587'),
+              secure: process.env.SMTP_SECURE === 'true',
+              auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+            });
+            await transporter.sendMail({
+              from: `"${data.name}" <${process.env.SMTP_USER}>`,
+              replyTo: data.email,
+              to: 'info@averreo.com.tr',
+              subject: `[İletişim Formu] ${data.subject || data.name}`,
+              text: `Ad Soyad: ${data.name}\nE-posta: ${data.email}\nKonu: ${data.subject}\n\nMesaj:\n${data.message}`
+            });
+          } catch (mailErr) {
+            console.error("Failed sending email via SMTP:", mailErr);
+          }
+        }
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, message: 'Mesaj başarıyla iletildi.' }));
+      } catch (e) {
+        console.error("Contact API error:", e);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: e.message }));
+      }
+    });
+    return;
+  }
+
   // API to upload files (images/videos)
   if (req.method === 'POST' && req.url === '/api/upload') {
     if (!checkAuth(req.headers)) {
@@ -189,6 +275,46 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  const serveFileStreaming = (req, res, absPath, contentType, cacheControl) => {
+    fs.stat(absPath, (err, stats) => {
+      if (err || !stats.isFile()) {
+        res.writeHead(404);
+        return res.end('404 Not Found');
+      }
+
+      const { size } = stats;
+      const range = req.headers.range;
+
+      // Only allow 206 Partial Content for video/audio streaming, not for HTML documents (which breaks WhatsApp crawler)
+      const isMedia = contentType.startsWith('video/') || contentType.startsWith('audio/');
+
+      if (range && isMedia) {
+        const parts = range.replace(/bytes=/, "").split("-");
+        const start = parseInt(parts[0], 10);
+        const end = parts[1] ? parseInt(parts[1], 10) : size - 1;
+        const chunksize = (end - start) + 1;
+        const file = fs.createReadStream(absPath, { start, end });
+        const head = {
+          'Content-Range': `bytes ${start}-${end}/${size}`,
+          'Accept-Ranges': 'bytes',
+          'Content-Length': chunksize,
+          'Content-Type': contentType,
+          'Cache-Control': cacheControl
+        };
+        res.writeHead(206, head);
+        file.pipe(res);
+      } else {
+        const head = {
+          'Content-Length': size,
+          'Content-Type': contentType,
+          'Cache-Control': cacheControl
+        };
+        res.writeHead(200, head);
+        fs.createReadStream(absPath).pipe(res);
+      }
+    });
+  };
+
   // Serve static assets (Vite compiled assets or images/videos)
   if (req.url.startsWith('/assets/')) {
     let filePath = decodeURIComponent(req.url.split('?')[0]);
@@ -209,15 +335,7 @@ const server = http.createServer((req, res) => {
       cacheControl = 'public, max-age=31536000, immutable';
     }
 
-    fs.readFile(absPath, (err, content) => {
-      if (err) {
-        res.writeHead(404);
-        res.end('404 Not Found');
-      } else {
-        res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': cacheControl });
-        res.end(content, 'utf-8');
-      }
-    });
+    serveFileStreaming(req, res, absPath, contentType, cacheControl);
     return;
   }
 
@@ -235,16 +353,9 @@ const server = http.createServer((req, res) => {
     
     const extname = String(path.extname(absPath)).toLowerCase();
     let contentType = MIME_TYPES[extname] || 'text/html';
+    const cacheHeader = extname === '.html' ? 'no-cache, no-store, must-revalidate' : 'public, max-age=86400';
     
-    fs.readFile(absPath, (err, content) => {
-      if (err) {
-        res.writeHead(404);
-        res.end('404 Not Found');
-      } else {
-        res.writeHead(200, { 'Content-Type': contentType });
-        res.end(content, 'utf-8');
-      }
-    });
+    serveFileStreaming(req, res, absPath, contentType, cacheHeader);
   });
 });
 

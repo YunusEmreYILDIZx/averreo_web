@@ -6,7 +6,7 @@ const resources = {
     translation: {
       // Navigation
       nav_platforms: "Platformlar",
-      nav_solutions: "Mühendislik Çözümleri",
+      nav_solutions: "Çözümlerimiz",
       nav_about: "Hakkımızda",
       nav_team: "Ekip",
       nav_contact: "İletişim",
@@ -21,7 +21,7 @@ const resources = {
       pillar1_title: "Platformlar",
       pillar1_desc: "Kapalı alanlardan derin sulara; keşif ve denetim için insansız sistemler geliştiriyoruz.",
       pillar1_cta: "Platformları İncele",
-      pillar2_title: "Mühendislik Çözümleri",
+      pillar2_title: "Çözümlerimiz",
       pillar2_desc: "Platformlarımızı ürettiğimiz Ar-Ge seviyesindeki mühendisliği, çözüm ortaklarımızın projelerine de uyguluyoruz.",
       pillar2_cta: "Yetkinliklerimiz",
       // Contact
@@ -32,7 +32,7 @@ const resources = {
       form_email: "E-posta",
       form_subject: "Konu",
       form_message: "Mesajınız...",
-      form_success: "Teşekkürler! E-posta uygulamanız açılıyor; mesajınızı göndererek bize ulaşabilirsiniz.",
+      form_success: "Mesajınız başarıyla iletildi! Ekibimiz en kısa sürede dönüş yapacaktır.",
     }
   },
   en: {
@@ -65,7 +65,7 @@ const resources = {
       form_email: "Email",
       form_subject: "Subject",
       form_message: "Your message...",
-      form_success: "Thank you! Your email app is opening; send the message to reach us.",
+      form_success: "Message sent successfully! Our team will get back to you shortly.",
     }
   }
 };

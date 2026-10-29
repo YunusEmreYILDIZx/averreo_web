@@ -86,3 +86,76 @@
   z-index: 0;
   opacity: 0.4;
 }
+
+/* ===== Averreo Intelligence ===== */
+.ai-grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.ai-gradient-text {
+  background: linear-gradient(100deg, #67e8f9 0%, #60a5fa 35%, #a78bfa 65%, #67e8f9 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ai-shimmer 6s linear infinite;
+}
+@keyframes ai-shimmer {
+  to { background-position: 200% center; }
+}
+
+@keyframes ai-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.ai-float { animation: ai-float 6s ease-in-out infinite; }
+.ai-float-slow { animation: ai-float 9s ease-in-out infinite; }
+
+@keyframes ai-draw {
+  from { stroke-dashoffset: 600; }
+  to { stroke-dashoffset: 0; }
+}
+.ai-draw {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: ai-draw 2.4s var(--ease) 0.4s forwards;
+}
+
+@keyframes ai-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+.ai-scan {
+  animation: ai-scan 4s linear infinite;
+}
+
+@keyframes ai-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ai-fade-in { animation: ai-fade-in 0.5s var(--ease) both; }
+
+.ai-card-glow {
+  position: relative;
+}
+.ai-card-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(103,232,249,0.5), rgba(167,139,250,0.15) 40%, transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+  pointer-events: none;
+}
+.ai-card-glow:hover::before { opacity: 1; }
+

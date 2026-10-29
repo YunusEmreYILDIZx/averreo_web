@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import ProductDetail from './pages/ProductDetail';
 import Platformlar from './pages/Platformlar';
-import Cozumler from './pages/Cozumler';
+import Intelligence from './pages/Intelligence';
 import Hakkimizda from './pages/Hakkimizda';
 import Ekip from './pages/Ekip';
 import Iletisim from './pages/Iletisim';
@@ -22,7 +22,8 @@ function App() {
               <Route index element={<Home />} />
               <Route path="platformlar" element={<Platformlar />} />
               <Route path="product/:id" element={<ProductDetail />} />
-              <Route path="cozumler" element={<Cozumler />} />
+              <Route path="intelligence" element={<Intelligence />} />
+              <Route path="cozumler" element={<Navigate to="/intelligence" replace />} />
               <Route path="hakkimizda" element={<Hakkimizda />} />
               <Route path="ekip" element={<Ekip />} />
               <Route path="iletisim" element={<Iletisim />} />

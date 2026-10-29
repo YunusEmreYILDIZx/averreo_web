@@ -33,7 +33,7 @@ export default function Navbar() {
   const navLinkClass = "text-white/70 hover:text-white px-4 h-16 flex items-center font-medium transition-colors";
 
   return (
-    <nav className="absolute top-4 lg:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 flex items-center justify-between px-5 lg:px-8 h-16 lg:h-20 bg-[#050505]/70 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all">
+    <nav className="absolute top-4 lg:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 flex items-center justify-between px-5 lg:px-8 h-16 lg:h-20 bg-transparent backdrop-blur-md border border-white/15 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.3)] transition-all">
       
       {/* Logo (Left) */}
       <div className="flex items-center w-1/4">
@@ -61,7 +61,10 @@ export default function Navbar() {
           </div>
         </div>
 
-        <Link to="/cozumler" className="text-white/60 hover:text-white px-3 lg:px-4 h-12 flex items-center font-medium text-sm lg:text-base rounded-full hover:bg-white/5 transition-all">{t('nav_solutions')}</Link>
+        <Link to="/intelligence" className="group px-3 lg:px-4 h-12 flex items-center gap-1.5 font-medium text-sm lg:text-base rounded-full hover:bg-white/5 transition-all whitespace-nowrap">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.9)]"></span>
+          <span className="text-white/70 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-300 group-hover:to-violet-400 transition-colors">{t('nav_solutions')}</span>
+        </Link>
         <Link to="/hakkimizda" className="text-white/60 hover:text-white px-3 lg:px-4 h-12 flex items-center font-medium text-sm lg:text-base rounded-full hover:bg-white/5 transition-all">{t('nav_about')}</Link>
         <Link to="/ekip" className="text-white/60 hover:text-white px-3 lg:px-4 h-12 flex items-center font-medium text-sm lg:text-base rounded-full hover:bg-white/5 transition-all">{t('nav_team')}</Link>
         <Link to="/iletisim" className="text-white/60 hover:text-white px-3 lg:px-4 h-12 flex items-center font-medium text-sm lg:text-base rounded-full hover:bg-white/5 transition-all">{t('nav_contact')}</Link>
@@ -107,7 +110,7 @@ export default function Navbar() {
 
             {/* Diğer sayfalar */}
             <div className="flex flex-col gap-3">
-              <Link to="/cozumler" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_solutions')}</Link>
+              <Link to="/intelligence" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_solutions')}</Link>
               <Link to="/hakkimizda" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_about')}</Link>
               <Link to="/ekip" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_team')}</Link>
               <Link to="/iletisim" onClick={() => setIsMobileMenuOpen(false)} className="text-white text-lg font-medium">{t('nav_contact')}</Link>

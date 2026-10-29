@@ -60,67 +60,6 @@
     }
   },
 
-  "bereket": {
-    "id": "bereket",
-    "image": "assets/images/bereket_4k.png",
-    "video": "bereket.mp4",
-    "status": { "tr": "Ar-Ge / Geliştirme Aşamasında", "en": "In R&D / Development" },
-    "tr": {
-      "name": "Bereket",
-      "category": "Tarımsal Otonom Sistem",
-      "breadcrumb": "Platformlar > Bereket",
-      "tagline": "Tarlanızda Veri Odaklı Verim",
-      "description": "Bereket, hassas tarım uygulamaları, otonom püskürtme ve mahsul analizi için geliştirdiğimiz yüksek kapasiteli tarımsal insansız hava aracı platformudur.",
-      "details": "Geniş arazilerde ilaçlama ve gübreleme bugün çoğunlukla tek tip ve israfa açık. Bereket ile hedefimiz; multispektral analiz ve hassas konumlandırma kullanarak girdiyi sadece ihtiyaç olan yere uygulayan, hem verimi artıran hem toprağı koruyan veri odaklı bir tarım yaklaşımı sunmak.",
-      "capabilities": [
-        {
-          "title": "Hassas İlaçlama & Mikro Nozul Püskürtme",
-          "description": "Yüksek hassasiyetli sıvı dağıtım sistemi ve mikro nozul püskürtme mimarisi ile ilaç veya gübre girdisini doğrudan hedef yaprağa ulaştırır — sıfır israf ve maksimum verim.",
-          "image": "/assets/images/bereket_close_up.jpg"
-        },
-        {
-          "title": "Multispektral Mahsul Analizi",
-          "description": "Kamera ve sensör sistemiyle bitki rekoltesini, klorofil miktarını ve rekolte stresini henüz gözle görünmeden tespit eden hava analiz altyapısı.",
-          "image": "/assets/images/bereket_multispectral.png?v=3"
-        },
-        {
-          "title": "Zorlu Arazi & Otonom Navigasyon",
-          "description": "Teraslı arazilerden geniş buğday ve mısır tarlalarına kadar dinamik irtifa takibi (Terrain Following) ile tam otonom rota takibi ve görev icrası.",
-          "image": "/assets/images/bereket_sunset.jpg"
-        }
-      ],
-      "highlights": [],
-      "features": []
-    },
-    "en": {
-      "name": "Bereket",
-      "category": "Agricultural Autonomous System",
-      "breadcrumb": "Platforms > Bereket",
-      "tagline": "Data-Driven Yield in Your Field",
-      "description": "Bereket is a high-capacity agricultural unmanned aerial vehicle platform developed for precision farming applications, autonomous spraying, and crop analytics.",
-      "details": "Spraying and fertilizing large fields today is mostly uniform and prone to waste. With Bereket, our goal is to offer a data-driven approach that uses multispectral analysis and precise positioning to apply inputs only where needed — increasing yield while protecting the soil.",
-      "capabilities": [
-        {
-          "title": "Precision Spraying & Micro Nozzle Delivery",
-          "description": "High-precision liquid distribution and micro nozzle delivery system applying chemical or fertilizer inputs directly to target foliage with zero waste.",
-          "image": "/assets/images/bereket_close_up.jpg"
-        },
-        {
-          "title": "Multispectral Crop Analysis",
-          "description": "Airborne sensing infrastructure that detects plant stress, disease, and chlorophyll levels before they become visible to the naked eye.",
-          "image": "/assets/images/bereket_multispectral.png?v=3"
-        },
-        {
-          "title": "Terrain Following & Autonomous Navigation",
-          "description": "Dynamic terrain-following autonomous flight algorithms executing missions across challenging rice terraces, wheat fields, and orchards.",
-          "image": "/assets/images/bereket_sunset.jpg"
-        }
-      ],
-      "highlights": [],
-      "features": []
-    }
-  },
-
   "mercan": {
     "id": "mercan",
     "image": "assets/images/mercan_4k.png",

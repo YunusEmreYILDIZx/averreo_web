@@ -32,7 +32,7 @@ export default function Footer() {
           <h4 className="text-xs text-white/30 font-bold uppercase tracking-[0.2em] mb-6">{en ? 'Explore' : 'Keşfet'}</h4>
           <div className="flex flex-col space-y-4">
             <Link to="/platformlar" className="text-white/60 hover:text-white hover:translate-x-1 text-sm transition-all">{t('nav_platforms')}</Link>
-            <Link to="/cozumler" className="text-white/60 hover:text-white hover:translate-x-1 text-sm transition-all">{t('nav_solutions')}</Link>
+            <Link to="/intelligence" className="text-white/60 hover:text-white hover:translate-x-1 text-sm transition-all">{t('nav_solutions')}</Link>
             <Link to="/hakkimizda" className="text-white/60 hover:text-white hover:translate-x-1 text-sm transition-all">{t('nav_about')}</Link>
             <Link to="/ekip" className="text-white/60 hover:text-white hover:translate-x-1 text-sm transition-all">{t('nav_team')}</Link>
           </div>

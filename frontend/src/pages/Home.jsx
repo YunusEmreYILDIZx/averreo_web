@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Plane, Wrench, ArrowRight, ChevronDown } from 'lucide-react';
+import { Plane, Brain, ArrowRight, ChevronDown } from 'lucide-react';
 
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -12,8 +12,8 @@ export default function Home() {
   const [sent, setSent] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRefs = useRef([]);
-  const heroVideos = ['/home.mp4', '/dehliz.mp4', '/mercan.mp4', '/bereket.mp4'];
-
+  const heroVideos = ['/dehliz.mp4', '/mercan.mp4', '/bereket.mp4'];
+ 
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (video) {
@@ -76,7 +76,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative w-full h-[85svh] md:h-[88vh] overflow-hidden mt-16">
+      <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
         <div className="absolute inset-0 bg-black">
           {heroVideos.map((videoSrc, index) => (
             <video 
@@ -97,29 +97,8 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0e1426] via-[#0c0e1466] to-black"></div>
-        <div className="absolute bottom-12 md:bottom-20 left-6 md:left-12 z-10 max-w-4xl reveal pr-6 md:pr-0">
-          <div className="relative group">
-            
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white via-white/90 to-white/40 drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] relative z-10">
-              {t('hero_title')}
-            </h1>
-            <p className="text-lg md:text-2xl text-white font-light leading-relaxed max-w-2xl mb-8 md:mb-10 relative z-10 drop-shadow-[0_2px_10px_rgba(0,0,0,1)]">
-              {t('hero_desc')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-5 relative z-10">
-              <Link to="/iletisim" className="w-full sm:w-auto px-8 py-4 bg-white text-black text-base md:text-lg font-bold rounded-full text-center hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all duration-300 flex items-center justify-center gap-3 group/btn">
-                {t('hero_cta')}
-                <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover/btn:translate-x-1 transition-transform">
-                  <ArrowRight size={16} />
-                </span>
-              </Link>
-              <Link to="/platformlar" className="w-full sm:w-auto px-8 py-4 bg-black/30 backdrop-blur-md border border-white/20 text-white text-base md:text-lg font-bold rounded-full text-center hover:bg-white/10 hover:border-white/40 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300">
-                {t('hero_cta2')}
-              </Link>
-            </div>
-          </div>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/30"></div>
+
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-white/40 animate-bounce pointer-events-none hidden md:block">
           <ChevronDown size={26} strokeWidth={1.5} />
         </div>
@@ -144,10 +123,9 @@ export default function Home() {
           <DualPanel
             title={t('pillar2_title')}
             desc={t('pillar2_desc')}
-            icon={<Wrench size={32} />}
-            bgImage="/assets/images/mercan_4k.png"
-            bgVideo="/mercan.mp4"
-            onClick={() => navigate('/cozumler')}
+            icon={<Brain size={32} />}
+            bgImage="/assets/images/intelligence_hero.jpg"
+            onClick={() => navigate('/intelligence')}
           />
         </div>
       </section>
@@ -237,7 +215,7 @@ export default function Home() {
          onMouseEnter={handleMouseEnter}
          onMouseLeave={handleMouseLeave}
       >
-         <img src={bgImage} className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-0 transition-opacity duration-700 mix-blend-luminosity group-hover:scale-105" />
+         <img src={bgImage} alt="" className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${bgVideo ? 'opacity-20 group-hover:opacity-0 mix-blend-luminosity' : 'opacity-30 group-hover:opacity-60'}`} />
          
          {bgVideo && (
             <video 

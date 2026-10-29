@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.claude/
+*.pdf
+*.log
+*.py
+deploy.ps1
+.env*
+.DS_Store

@@ -6,7 +6,7 @@ const resources = {
     translation: {
       // Navigation
       nav_platforms: "Platformlar",
-      nav_solutions: "Çözümlerimiz",
+      nav_solutions: "Averreo Intelligence",
       nav_about: "Hakkımızda",
       nav_team: "Ekip",
       nav_contact: "İletişim",
@@ -21,9 +21,9 @@ const resources = {
       pillar1_title: "Platformlar",
       pillar1_desc: "Kapalı alanlardan derin sulara; keşif ve denetim için insansız sistemler geliştiriyoruz.",
       pillar1_cta: "Platformları İncele",
-      pillar2_title: "Çözümlerimiz",
-      pillar2_desc: "Platformlarımızı ürettiğimiz Ar-Ge seviyesindeki mühendisliği, çözüm ortaklarımızın projelerine de uyguluyoruz.",
-      pillar2_cta: "Yetkinliklerimiz",
+      pillar2_title: "Averreo Intelligence",
+      pillar2_desc: "Enerjiden iş gücüne, makineden kaliteye; işletmenizin tüm verisini analiz eden ve firmanızı daha verimli, hızlı ve rekabetçi kılan yapay zekâ platformu.",
+      pillar2_cta: "Platformu Keşfet",
       // Contact
       contact_title: "İletişim",
       contact_desc: "Savunma ve sivil projeleriniz, ya da mühendislik çözüm ortaklığı için ekibimizle iletişime geçin.",
@@ -39,7 +39,7 @@ const resources = {
     translation: {
       // Navigation
       nav_platforms: "Platforms",
-      nav_solutions: "Engineering Solutions",
+      nav_solutions: "Averreo Intelligence",
       nav_about: "About",
       nav_team: "Team",
       nav_contact: "Contact",
@@ -54,9 +54,9 @@ const resources = {
       pillar1_title: "Platforms",
       pillar1_desc: "From confined spaces to deep waters, we develop unmanned systems for reconnaissance and inspection.",
       pillar1_cta: "Explore Platforms",
-      pillar2_title: "Engineering Solutions",
-      pillar2_desc: "We apply the R&D-grade engineering behind our own platforms to our partners' projects.",
-      pillar2_cta: "Our Capabilities",
+      pillar2_title: "Averreo Intelligence",
+      pillar2_desc: "From energy to workforce, machines to quality — an AI platform that analyzes all your business data to make your company more efficient, faster, and more competitive.",
+      pillar2_cta: "Explore the Platform",
       // Contact
       contact_title: "Contact",
       contact_desc: "Get in touch with our team for your defense and civil projects, or for engineering solution partnership.",

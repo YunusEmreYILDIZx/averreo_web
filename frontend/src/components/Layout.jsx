@@ -6,7 +6,7 @@ import Footer from './Footer';
 const TITLES = {
   '/': 'Averreo Industries — İnsansız Sistemler & Otonom Teknolojiler',
   '/platformlar': 'Platformlar — Averreo Industries',
-  '/cozumler': 'Çözümlerimiz — Averreo Industries',
+  '/intelligence': 'Averreo Intelligence — Yapay Zekâ Destekli Operasyonel Zekâ Platformu',
   '/hakkimizda': 'Hakkımızda — Averreo Industries',
   '/ekip': 'Ekip — Averreo Industries',
   '/iletisim': 'İletişim — Averreo Industries',
